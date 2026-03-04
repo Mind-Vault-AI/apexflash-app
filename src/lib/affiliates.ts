@@ -76,6 +76,26 @@ export const EXCHANGES: Exchange[] = [
     features: ['1400+ Coins', 'Startup IEO', 'Copy Trading', 'NFTs'],
     tier: 'standard',
   },
+  {
+    slug: 'mexc',
+    name: 'MEXC',
+    logo: '🔷',
+    affiliateUrl: process.env.NEXT_PUBLIC_MEXC_AFFILIATE_URL || 'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
+    commission: 'Up to 40% commission',
+    description: 'Zero-fee spot trading with massive token selection and fast listings.',
+    features: ['Zero Spot Fees', '2300+ Coins', 'Futures Trading', 'MX Token Airdrops'],
+    tier: 'standard',
+  },
+  {
+    slug: 'blofin',
+    name: 'BloFin',
+    logo: '🐋',
+    affiliateUrl: process.env.NEXT_PUBLIC_BLOFIN_AFFILIATE_URL || 'https://www.blofin.com/register',
+    commission: 'Up to 50% commission',
+    description: 'Whale-grade derivatives exchange with deep liquidity and copy trading.',
+    features: ['Copy Trading', '150x Leverage', 'Low Fees', 'Futures Focus'],
+    tier: 'standard',
+  },
 ];
 
 export function getExchange(slug: string): Exchange | undefined {
