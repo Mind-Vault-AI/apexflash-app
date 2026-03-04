@@ -1,0 +1,28 @@
+# Render Blueprint - deploy this to render.com
+# Connect your GitHub repo and Render auto-deploys on push
+services:
+  - type: web
+    name: apexflash-app
+    runtime: node
+    plan: starter  # $7/month - enough for production traffic
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_BITUNIX_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_BINANCE_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_BYBIT_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_OKX_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_KUCOIN_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_GATE_AFFILIATE_URL
+        sync: false
+      - key: NEXT_PUBLIC_GUMROAD_URL
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
