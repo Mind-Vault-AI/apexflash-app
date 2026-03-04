@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Exchanges', href: '#exchanges' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Whale Bot', href: CONFIG.telegram.whaleBot, external: true },
 ];
 
 export default function Navbar() {
@@ -17,29 +16,34 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-xl border-b border-dark-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-apex-500 to-apex-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-apex-500/30 transition-shadow">
-              <Zap className="w-5 h-5 text-white" />
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-apex-500 to-apex-600 flex items-center justify-center">
+              <Zap className="w-4 h-4 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">ApexFlash</span>
+            <span className="text-lg font-bold gradient-text">ApexFlash</span>
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="text-dark-300 hover:text-apex-400 transition-colors text-sm font-medium"
+                className="text-dark-400 hover:text-apex-400 transition-colors text-sm"
               >
                 {link.label}
               </a>
             ))}
-            <a href="#pricing" className="btn-primary !px-6 !py-2.5 text-sm">
-              Get Started
+            <a
+              href={CONFIG.telegram.apexBot}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary !px-5 !py-2 text-sm"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              Start Trading
             </a>
           </div>
 
@@ -53,19 +57,25 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-dark-900/95 backdrop-blur-xl border-b border-dark-800">
-          <div className="px-4 py-4 space-y-3">
+          <div className="px-4 py-3 space-y-2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block text-dark-200 hover:text-apex-400 py-2 text-base"
+                className="block text-dark-200 hover:text-apex-400 py-2 text-sm"
               >
                 {link.label}
               </a>
             ))}
-            <a href="#pricing" onClick={() => setOpen(false)} className="btn-primary w-full !py-3 text-center mt-4">
-              Get Started
+            <a
+              href={CONFIG.telegram.apexBot}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="btn-primary w-full !py-2.5 text-center text-sm mt-2"
+            >
+              Start Trading
             </a>
           </div>
         </div>

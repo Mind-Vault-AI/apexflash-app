@@ -7,8 +7,8 @@ const PLANS = [
   {
     ...CONFIG.pricing.free,
     icon: Zap,
-    cta: 'Start Free',
-    href: CONFIG.telegram.whaleBot,
+    cta: 'Start Free on Telegram',
+    href: CONFIG.telegram.apexBot,
     popular: false,
   },
   {
@@ -29,13 +29,13 @@ const PLANS = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 relative">
+    <section id="pricing" className="py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </h2>
-          <p className="text-dark-400 max-w-2xl mx-auto text-lg">
+          <p className="text-dark-400 max-w-xl mx-auto">
             Start free. Upgrade when you need more power.
           </p>
         </div>

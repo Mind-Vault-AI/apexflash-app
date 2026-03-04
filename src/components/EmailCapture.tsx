@@ -1,80 +1,32 @@
-'use client';
+import { CONFIG } from '@/lib/config';
+import { Zap, ArrowRight } from 'lucide-react';
 
-import { useState } from 'react';
-import { Send, CheckCircle, Loader2 } from 'lucide-react';
-
-export default function EmailCapture() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState('');
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email) return;
-
-    setStatus('loading');
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setStatus('success');
-        setMessage(data.message || 'Welcome aboard!');
-        setEmail('');
-      } else {
-        setStatus('error');
-        setMessage(data.error || 'Something went wrong');
-      }
-    } catch {
-      setStatus('error');
-      setMessage('Network error. Please try again.');
-    }
-  }
-
+export default function FinalCTA() {
   return (
-    <section className="py-24 relative">
+    <section className="py-16 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-apex-950/10 to-dark-950" />
       <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-          Stay <span className="gradient-text">Ahead of the Market</span>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+          Ready to <span className="gradient-text">Trade Smarter?</span>
         </h2>
-        <p className="text-dark-400 text-lg mb-8">
-          Get weekly market intelligence, whale movement summaries, and early access to new features.
+        <p className="text-dark-400 max-w-xl mx-auto mb-6">
+          Join 2,400+ traders getting real-time whale alerts. Free forever on Telegram.
         </p>
 
-        {status === 'success' ? (
-          <div className="flex items-center justify-center gap-3 text-apex-400 text-lg font-medium">
-            <CheckCircle className="w-6 h-6" />
-            {message}
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              className="flex-1 px-5 py-4 bg-dark-900 border border-dark-700 rounded-xl text-white placeholder:text-dark-500 focus:outline-none focus:border-apex-500/50 focus:ring-1 focus:ring-apex-500/30 transition-colors"
-            />
-            <button type="submit" disabled={status === 'loading'} className="btn-primary whitespace-nowrap">
-              {status === 'loading' ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <>
-                  <Send className="w-4 h-4" />
-                  Subscribe
-                </>
-              )}
-            </button>
-          </form>
-        )}
+        <a
+          href={CONFIG.telegram.apexBot}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary text-lg inline-flex !py-3.5 !px-8"
+        >
+          <Zap className="w-5 h-5" />
+          Get Free Whale Alerts
+          <ArrowRight className="w-5 h-5" />
+        </a>
 
-        {status === 'error' && <p className="text-red-400 text-sm mt-3">{message}</p>}
-        <p className="text-dark-600 text-xs mt-4">No spam ever. Unsubscribe anytime.</p>
+        <p className="text-dark-600 text-xs mt-4">
+          No credit card required. Instant access via Telegram.
+        </p>
       </div>
     </section>
   );

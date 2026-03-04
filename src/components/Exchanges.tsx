@@ -52,26 +52,26 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 
 export default function Exchanges() {
   return (
-    <section id="exchanges" className="py-24 relative">
+    <section id="exchanges" className="py-16 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900/50 to-dark-950" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
             Trade on <span className="gradient-text">Top Exchanges</span>
           </h2>
-          <p className="text-dark-400 max-w-2xl mx-auto text-lg">
-            Sign up through ApexFlash and get exclusive fee discounts on the best crypto exchanges.
+          <p className="text-dark-400 max-w-xl mx-auto">
+            Exclusive fee discounts when you sign up through ApexFlash.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {EXCHANGES.map((exchange) => (
             <ExchangeCard key={exchange.slug} exchange={exchange} />
           ))}
         </div>
 
-        <p className="text-center text-dark-500 text-sm mt-8">
-          ApexFlash may receive referral commissions from partner exchanges. This helps fund free tools for the community.
+        <p className="text-center text-dark-600 text-xs mt-6">
+          ApexFlash may receive referral commissions. This funds free tools for the community.
         </p>
       </div>
     </section>

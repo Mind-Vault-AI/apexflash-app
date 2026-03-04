@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import Exchanges from '@/components/Exchanges';
 import Pricing from '@/components/Pricing';
-import EmailCapture from '@/components/EmailCapture';
+import FinalCTA from '@/components/EmailCapture';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <Features />
       <Exchanges />
       <Pricing />
-      <EmailCapture />
+      <FinalCTA />
       <Footer />
     </main>
   );

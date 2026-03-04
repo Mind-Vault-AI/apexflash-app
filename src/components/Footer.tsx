@@ -3,9 +3,9 @@ import { Zap } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-dark-800/50 py-12">
+    <footer className="border-t border-dark-800/50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-4 gap-6 mb-6">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-3">
@@ -28,8 +28,8 @@ export default function Footer() {
               <li><a href="#pricing" className="hover:text-apex-400 transition-colors">Pricing</a></li>
               <li><a href="#exchanges" className="hover:text-apex-400 transition-colors">Exchanges</a></li>
               <li>
-                <a href={CONFIG.telegram.whaleBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Whale Bot
+                <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                  ApexFlash Bot
                 </a>
               </li>
             </ul>
@@ -39,7 +39,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-3">Connect</h4>
             <ul className="space-y-2 text-sm text-dark-400">
               <li>
-                <a href={CONFIG.telegram.whaleBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
                   Telegram
                 </a>
               </li>
