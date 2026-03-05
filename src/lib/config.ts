@@ -12,7 +12,8 @@ export const CONFIG = {
     channel: 'https://t.me/apexflash_signals',
   },
   gumroad: {
-    premiumUrl: process.env.NEXT_PUBLIC_GUMROAD_URL || 'https://apexflash.gumroad.com/l/premium',
+    proUrl: process.env.NEXT_PUBLIC_GUMROAD_PRO_URL || 'https://mindvault34.gumroad.com/l/pctpy',
+    eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/elite',
   },
   social: {
     twitter: 'https://x.com/apexflashpro',

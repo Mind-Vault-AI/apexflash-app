@@ -60,11 +60,11 @@ export default function Hero() {
             <div className="flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2 text-dark-400">
                 <Users className="w-4 h-4 text-apex-400" />
-                <span><strong className="text-white">2,400+</strong> traders</span>
+                <span><strong className="text-white">Active</strong> traders</span>
               </div>
               <div className="flex items-center gap-2 text-dark-400">
                 <TrendingUp className="w-4 h-4 text-apex-400" />
-                <span><strong className="text-white">$1.2B+</strong> tracked daily</span>
+                <span><strong className="text-white">24/7</strong> whale tracking</span>
               </div>
             </div>
           </div>

@@ -15,14 +15,14 @@ const PLANS = [
     ...CONFIG.pricing.pro,
     icon: Zap,
     cta: 'Go Pro',
-    href: CONFIG.gumroad.premiumUrl,
+    href: CONFIG.gumroad.proUrl,
     popular: true,
   },
   {
     ...CONFIG.pricing.elite,
     icon: Crown,
     cta: 'Go Elite',
-    href: CONFIG.gumroad.premiumUrl,
+    href: CONFIG.gumroad.eliteUrl,
     popular: false,
   },
 ];

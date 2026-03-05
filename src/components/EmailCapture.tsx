@@ -10,7 +10,7 @@ export default function FinalCTA() {
           Ready to <span className="gradient-text">Trade Smarter?</span>
         </h2>
         <p className="text-dark-400 max-w-xl mx-auto mb-6">
-          Join 2,400+ traders getting real-time whale alerts. Free forever on Telegram.
+          Get real-time whale alerts and AI trading signals. Free forever on Telegram.
         </p>
 
         <a
