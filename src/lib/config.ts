@@ -16,7 +16,7 @@ export const CONFIG = {
     eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/elite',
   },
   social: {
-    twitter: 'https://x.com/apexflashpro',
+    twitter: 'https://x.com/MindVault_ai',
   },
   pricing: {
     free: {
