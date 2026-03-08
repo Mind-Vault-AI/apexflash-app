@@ -14,7 +14,7 @@ const WHALES = [
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center pt-14 pb-6 overflow-hidden" style={{ minHeight: 'calc(100vh - 0px)' }}>
+    <section className="relative flex items-center pt-24 pb-6 overflow-hidden" style={{ minHeight: 'calc(100vh - 0px)' }}>
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-apex-900/20 via-dark-950 to-dark-950" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-apex-500/5 rounded-full blur-[100px]" />
