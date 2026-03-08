@@ -7,9 +7,9 @@ export const CONFIG = {
   siteUrl: 'https://apexflash.pro',
   supportEmail: 'support@apexflash.pro',
   telegram: {
-    whaleBot: 'https://t.me/MVAi_WhalesTrader_Bot',
+    whaleBot: 'https://t.me/ApexFlashBot',
     apexBot: 'https://t.me/ApexFlashBot',
-    channel: 'https://t.me/apexflash_signals',
+    channel: 'https://t.me/ApexFlashAlerts',
   },
   gumroad: {
     proUrl: process.env.NEXT_PUBLIC_GUMROAD_PRO_URL || 'https://mindvault34.gumroad.com/l/pctpy',
