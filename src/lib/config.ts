@@ -13,7 +13,7 @@ export const CONFIG = {
   },
   gumroad: {
     proUrl: process.env.NEXT_PUBLIC_GUMROAD_PRO_URL || 'https://mindvault34.gumroad.com/l/pctpy',
-    eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/elite',
+    eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/rwauqu',
   },
   social: {
     twitter: 'https://x.com/MindVault_ai',
