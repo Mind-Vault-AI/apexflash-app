@@ -13,7 +13,7 @@
 }
 
 .ticker-track {
-  animation: tickerScroll 40s linear infinite;
+  animation: tickerScroll 25s linear infinite;
 }
 
 .ticker-track:hover {

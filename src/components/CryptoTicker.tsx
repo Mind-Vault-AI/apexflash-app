@@ -17,6 +17,49 @@ const COIN_IMG: Record<string, string> = {
   DOGE: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png',
 };
 
+// Mini sparkline data per coin (7 data points)
+const SPARKLINES: Record<string, number[]> = {
+  SOL: [120, 128, 118, 135, 132, 140, 142],
+  BTC: [82, 84, 81, 86, 85, 87, 87.4],
+  ETH: [3.1, 3.15, 3.08, 3.25, 3.22, 3.30, 3.285],
+  BONK: [22, 21, 24, 25, 24, 27, 28.4],
+  WIF: [2.1, 2.0, 1.95, 1.92, 1.90, 1.88, 1.87],
+  JUP: [0.78, 0.82, 0.81, 0.85, 0.88, 0.92, 0.94],
+  RENDER: [7.2, 7.5, 7.3, 7.8, 7.6, 8.0, 8.12],
+  PYTH: [0.35, 0.37, 0.36, 0.38, 0.39, 0.40, 0.41],
+  JTO: [3.8, 3.7, 3.65, 3.6, 3.58, 3.55, 3.54],
+  RAY: [1.8, 1.85, 1.90, 1.95, 2.0, 2.10, 2.18],
+  ONDO: [1.20, 1.22, 1.25, 1.28, 1.26, 1.30, 1.32],
+  HNT: [5.2, 5.3, 5.4, 5.35, 5.5, 5.6, 5.67],
+  DOGE: [0.175, 0.178, 0.176, 0.180, 0.179, 0.181, 0.182],
+};
+
+function MiniSparkline({ data, up }: { data: number[]; up: boolean }) {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const range = max - min || 1;
+  const w = 40;
+  const h = 16;
+  const step = w / (data.length - 1);
+
+  const points = data
+    .map((v, i) => `${i * step},${h - ((v - min) / range) * (h - 2) - 1}`)
+    .join(' ');
+
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} className="flex-shrink-0">
+      <polyline
+        points={points}
+        fill="none"
+        stroke={up ? '#34d399' : '#f87171'}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 const TICKER_ITEMS = [
   { symbol: 'SOL', price: '$142.38', change: '+5.2%', up: true },
   { symbol: 'BTC', price: '$87,421', change: '+2.1%', up: true },
@@ -41,34 +84,36 @@ export default function CryptoTicker() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-sm border-b border-dark-800/60 overflow-hidden">
-      <div className="ticker-track flex items-center gap-8 py-1.5 px-4 whitespace-nowrap">
+      <div className="ticker-track flex items-center gap-8 py-2 px-4 whitespace-nowrap">
         {items.map((item, i) => {
           if ('cta' in item && item.cta) {
             return (
-              <span key={i} className="text-xs font-semibold text-apex-400 flex-shrink-0">
+              <span key={i} className="text-sm font-semibold text-apex-400 flex-shrink-0">
                 {item.text}
               </span>
             );
           }
           const tick = item as { symbol: string; price: string; change: string; up: boolean };
           const img = COIN_IMG[tick.symbol];
+          const sparkline = SPARKLINES[tick.symbol];
           return (
-            <span key={i} className="flex items-center gap-1.5 text-xs flex-shrink-0">
+            <span key={i} className="flex items-center gap-2 text-sm flex-shrink-0">
               {img && (
                 <img
                   src={img}
                   alt={tick.symbol}
-                  width={14}
-                  height={14}
+                  width={18}
+                  height={18}
                   className="rounded-full"
                   loading="lazy"
                 />
               )}
-              <span className="font-semibold text-dark-200">{tick.symbol}</span>
-              <span className="text-dark-400">{tick.price}</span>
-              <span className={tick.up ? 'text-emerald-400' : 'text-red-400'}>
+              <span className="font-semibold text-dark-100">{tick.symbol}</span>
+              <span className="text-dark-300">{tick.price}</span>
+              <span className={`font-medium ${tick.up ? 'text-emerald-400' : 'text-red-400'}`}>
                 {tick.change}
               </span>
+              {sparkline && <MiniSparkline data={sparkline} up={tick.up} />}
             </span>
           );
         })}

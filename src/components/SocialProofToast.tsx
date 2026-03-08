@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { X } from 'lucide-react';
 
 interface Toast {
   id: number;
@@ -13,7 +12,7 @@ interface Toast {
 const NAMES = [
   'Thomas', 'Jan', 'Pieter', 'Alex', 'Marco', 'David', 'Sven',
   'Lucas', 'Daan', 'Mike', 'James', 'Liam', 'Noah', 'Carlos',
-  'Felix', 'Max', 'Oscar', 'Erik', 'Stefan', 'Kevin',
+  'Felix', 'Max', 'Oscar', 'Stefan', 'Kevin', 'Raj',
 ];
 
 const CITIES = [
@@ -23,7 +22,7 @@ const CITIES = [
 
 const TOKENS = ['SOL', 'BONK', 'WIF', 'JUP', 'RENDER', 'JTO', 'PYTH', 'RAY'];
 
-const TIMES = ['just now', '2 min ago', '5 min ago', '8 min ago', '12 min ago'];
+const TIMES = ['just now', '2 min ago', '5 min ago', '8 min ago'];
 
 function randomItem<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -35,49 +34,34 @@ function randomNum(min: number, max: number): number {
 
 function generateToast(): Toast {
   const templates = [
-    // Subscription events
     () => ({
       emoji: '🔥',
-      text: `${randomItem(NAMES)} just subscribed to Flash Pro`,
+      text: `${randomItem(NAMES)} subscribed to Flash Pro`,
       time: randomItem(TIMES),
     }),
     () => ({
       emoji: '💎',
-      text: `${randomItem(NAMES)} upgraded to Flash Elite`,
+      text: `${randomItem(NAMES)} upgraded to Elite`,
       time: randomItem(TIMES),
     }),
-    // Trade events
     () => ({
       emoji: '📈',
-      text: `${randomItem(NAMES)} made +${randomNum(8, 45)}% on $${randomItem(TOKENS)}`,
-      time: randomItem(TIMES),
-    }),
-    () => ({
-      emoji: '💰',
-      text: `${randomItem(NAMES)} traded $${randomNum(2, 15)}K ${randomItem(TOKENS)} via ApexFlash`,
-      time: randomItem(TIMES),
-    }),
-    // Whale alerts
-    () => ({
-      emoji: '🐋',
-      text: `Whale moved $${randomNum(1, 8)}M SOL — alert sent to ${randomNum(40, 200)}+ users`,
+      text: `${randomItem(NAMES)} made +${randomNum(8, 45)}% on ${randomItem(TOKENS)}`,
       time: randomItem(TIMES),
     }),
     () => ({
       emoji: '🐋',
-      text: `Binance whale withdrew $${randomNum(2, 12)}M — check alerts`,
+      text: `Whale moved $${randomNum(1, 8)}M SOL — ${randomNum(40, 200)}+ users alerted`,
       time: randomItem(TIMES),
     }),
-    // New users
     () => ({
       emoji: '🚀',
       text: `${randomItem(NAMES)} from ${randomItem(CITIES)} joined ApexFlash`,
       time: randomItem(TIMES),
     }),
-    // Referral events
     () => ({
       emoji: '🎯',
-      text: `${randomItem(NAMES)} earned $${randomNum(5, 50)} in referral rewards`,
+      text: `${randomItem(NAMES)} earned $${randomNum(5, 50)} referral reward`,
       time: randomItem(TIMES),
     }),
   ];
@@ -89,30 +73,26 @@ function generateToast(): Toast {
 export default function SocialProofToast() {
   const [toast, setToast] = useState<Toast | null>(null);
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
 
   const showToast = useCallback(() => {
-    if (dismissed) return;
     const newToast = generateToast();
     setToast(newToast);
     setVisible(true);
 
-    // Auto-hide after 5s
+    // Auto-hide after 4s
     setTimeout(() => {
       setVisible(false);
-    }, 5000);
-  }, [dismissed]);
+    }, 4000);
+  }, []);
 
   useEffect(() => {
-    // First toast after 6s
     const initialDelay = setTimeout(() => {
       showToast();
-    }, 6000);
+    }, 8000);
 
-    // Then every 10-18s
     const interval = setInterval(() => {
       showToast();
-    }, randomNum(10000, 18000));
+    }, randomNum(15000, 25000));
 
     return () => {
       clearTimeout(initialDelay);
@@ -120,52 +100,24 @@ export default function SocialProofToast() {
     };
   }, [showToast]);
 
-  const handleDismiss = () => {
-    setVisible(false);
-    setDismissed(true);
-  };
-
-  if (!toast || dismissed) return null;
-
   return (
     <div
-      className={`fixed bottom-5 left-5 z-50 max-w-sm transition-all duration-500 ease-out ${
-        visible
-          ? 'translate-x-0 opacity-100'
-          : '-translate-x-full opacity-0 pointer-events-none'
+      className={`fixed top-[38px] left-0 right-0 overflow-hidden transition-all duration-500 ease-out ${
+        visible && toast
+          ? 'max-h-8 opacity-100'
+          : 'max-h-0 opacity-0'
       }`}
+      style={{ zIndex: 45 }}
     >
-      <div className="bg-dark-900/95 backdrop-blur-xl border border-dark-700/60 rounded-xl p-4 shadow-2xl shadow-black/40 flex items-start gap-3">
-        {/* Emoji */}
-        <span className="text-2xl flex-shrink-0 mt-0.5">{toast.emoji}</span>
-
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          <p className="text-sm text-dark-100 font-medium leading-snug">{toast.text}</p>
-          <p className="text-xs text-dark-500 mt-1">{toast.time}</p>
-        </div>
-
-        {/* Close */}
-        <button
-          onClick={handleDismiss}
-          className="flex-shrink-0 text-dark-500 hover:text-dark-300 transition-colors p-0.5"
-          aria-label="Dismiss"
-        >
-          <X className="w-3.5 h-3.5" />
-        </button>
+      <div className="bg-apex-500/10 border-b border-apex-500/20 px-4 py-1 flex items-center justify-center gap-3">
+        <span className="text-xs">{toast?.emoji}</span>
+        <span className="text-[11px] text-apex-300 font-medium truncate">
+          {toast?.text}
+        </span>
+        <span className="text-[10px] text-dark-500 flex-shrink-0">
+          {toast?.time}
+        </span>
       </div>
-
-      {/* Green progress bar that shrinks over 5s */}
-      {visible && (
-        <div className="mx-2 mt-0.5 h-0.5 rounded-full overflow-hidden bg-dark-800">
-          <div
-            className="h-full bg-gradient-to-r from-apex-500 to-apex-400 rounded-full"
-            style={{
-              animation: 'shrinkBar 5s linear forwards',
-            }}
-          />
-        </div>
-      )}
     </div>
   );
 }
