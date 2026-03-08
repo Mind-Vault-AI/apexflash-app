@@ -4,12 +4,12 @@ import { CONFIG } from '@/lib/config';
 import { ArrowRight, Zap, Users, TrendingUp } from 'lucide-react';
 
 const WHALES = [
-  'Elon Musk just moved $240M BTC',
-  'CryptoGod John sold 15,000 ETH',
-  'Binance Whale accumulated $80M SOL',
-  'Trump-linked wallet bought $50M ETH',
-  'Alex Becker wallet active - $12M move',
-  'Institutional whale: $190M to Coinbase',
+  'Binance hot wallet: $240M BTC outflow detected',
+  'Top 20 whale accumulated 85,000 SOL',
+  'OKX exchange withdrawal: $80M ETH moved to cold storage',
+  'Coinbase institutional wallet: $50M USDC inflow',
+  'Unknown whale bought 2.1M JUP in 3 txns',
+  'DEX whale: $12M SOL swapped via Jupiter',
 ];
 
 export default function Hero() {
@@ -39,7 +39,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">
-              See what Musk, CryptoGod John, Alex Becker and institutional whales
+              Track what top exchange wallets and institutional whales
               do <strong className="text-white">before</strong> the market reacts.
               Free alerts. Instant. On Telegram.
             </p>
