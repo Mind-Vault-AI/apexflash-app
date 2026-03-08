@@ -16,8 +16,8 @@ const FEATURES = [
   {
     icon: Shield,
     title: 'Risk Management',
-    description: 'Enterprise-grade circuit breakers and position sizing protect your capital automatically.',
-    badge: 'Built',
+    description: 'Trade limits, slippage protection, and price impact warnings guard every trade. Confirm before you execute — no surprises.',
+    badge: 'Active',
   },
 ];
 
