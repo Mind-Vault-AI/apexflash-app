@@ -111,6 +111,7 @@ export default function Hero() {
           <p className="text-xs text-dark-500 text-center mb-3">Tracking whales across top exchanges</p>
           <div className="flex items-center justify-center gap-6 sm:gap-10 text-sm font-medium">
             {[
+              { name: 'Bitunix', url: 'https://www.bitunix.com/register?vipCode=xc6jzk' },
               { name: 'Binance', url: 'https://accounts.binance.com/register' },
               { name: 'Coinbase', url: 'https://www.coinbase.com' },
               { name: 'OKX', url: 'https://www.okx.com/register' },
