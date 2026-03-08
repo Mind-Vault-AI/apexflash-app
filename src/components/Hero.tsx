@@ -111,14 +111,26 @@ export default function Hero() {
         {/* Bottom bar - exchange logos as trust signals */}
         <div className="mt-6 pt-4 border-t border-dark-800/30">
           <p className="text-xs text-dark-500 text-center mb-3">Tracking whales across top exchanges</p>
-          <div className="flex items-center justify-center gap-6 sm:gap-10 text-dark-500 text-sm font-medium">
-            <span>Binance</span>
-            <span>Coinbase</span>
-            <span>OKX</span>
-            <span>Bybit</span>
-            <span>MEXC</span>
-            <span className="hidden sm:inline">Bitfinex</span>
-            <span className="hidden sm:inline">Kraken</span>
+          <div className="flex items-center justify-center gap-6 sm:gap-10 text-sm font-medium">
+            {[
+              { name: 'Binance', url: 'https://accounts.binance.com/register' },
+              { name: 'Coinbase', url: 'https://www.coinbase.com' },
+              { name: 'OKX', url: 'https://www.okx.com/register' },
+              { name: 'Bybit', url: 'https://www.bybit.com/register' },
+              { name: 'MEXC', url: 'https://www.mexc.com/register?inviteCode=BPM0e8Rm' },
+              { name: 'Bitfinex', url: 'https://www.bitfinex.com', hidden: true },
+              { name: 'Kraken', url: 'https://www.kraken.com', hidden: true },
+            ].map((ex) => (
+              <a
+                key={ex.name}
+                href={ex.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-dark-500 hover:text-apex-400 transition-colors ${ex.hidden ? 'hidden sm:inline' : ''}`}
+              >
+                {ex.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>

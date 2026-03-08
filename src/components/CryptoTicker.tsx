@@ -1,5 +1,22 @@
 'use client';
 
+// CoinGecko CDN for coin logos
+const COIN_IMG: Record<string, string> = {
+  SOL: 'https://assets.coingecko.com/coins/images/4128/small/solana.png',
+  BTC: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png',
+  ETH: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png',
+  BONK: 'https://assets.coingecko.com/coins/images/28600/small/bonk.jpg',
+  WIF: 'https://assets.coingecko.com/coins/images/33566/small/dogwifhat.jpg',
+  JUP: 'https://assets.coingecko.com/coins/images/34188/small/jup.png',
+  RENDER: 'https://assets.coingecko.com/coins/images/11636/small/rndr.png',
+  PYTH: 'https://assets.coingecko.com/coins/images/31924/small/pyth.png',
+  JTO: 'https://assets.coingecko.com/coins/images/33228/small/jto.png',
+  RAY: 'https://assets.coingecko.com/coins/images/13928/small/PSigc4ie_400x400.jpg',
+  ONDO: 'https://assets.coingecko.com/coins/images/26580/small/ONDO.png',
+  HNT: 'https://assets.coingecko.com/coins/images/4284/small/Helium_HNT.png',
+  DOGE: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png',
+};
+
 const TICKER_ITEMS = [
   { symbol: 'SOL', price: '$142.38', change: '+5.2%', up: true },
   { symbol: 'BTC', price: '$87,421', change: '+2.1%', up: true },
@@ -20,12 +37,11 @@ const TICKER_ITEMS = [
 ];
 
 export default function CryptoTicker() {
-  // Double the items for seamless loop
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-sm border-b border-dark-800/60 overflow-hidden">
-      <div className="ticker-track flex items-center gap-8 py-2 px-4 whitespace-nowrap">
+      <div className="ticker-track flex items-center gap-8 py-1.5 px-4 whitespace-nowrap">
         {items.map((item, i) => {
           if ('cta' in item && item.cta) {
             return (
@@ -35,8 +51,19 @@ export default function CryptoTicker() {
             );
           }
           const tick = item as { symbol: string; price: string; change: string; up: boolean };
+          const img = COIN_IMG[tick.symbol];
           return (
             <span key={i} className="flex items-center gap-1.5 text-xs flex-shrink-0">
+              {img && (
+                <img
+                  src={img}
+                  alt={tick.symbol}
+                  width={14}
+                  height={14}
+                  className="rounded-full"
+                  loading="lazy"
+                />
+              )}
               <span className="font-semibold text-dark-200">{tick.symbol}</span>
               <span className="text-dark-400">{tick.price}</span>
               <span className={tick.up ? 'text-emerald-400' : 'text-red-400'}>
