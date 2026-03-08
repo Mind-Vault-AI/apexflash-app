@@ -31,6 +31,15 @@
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-apex-400 via-apex-300 to-cyan-300;
   }
+  .gradient-hero {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #1e40af, #0891b2 30%, #22d3ee 55%, #fde047 90%);
+  }
+  .emoji-reset {
+    -webkit-text-fill-color: initial;
+  }
   .glass-card {
     @apply bg-dark-900/60 backdrop-blur-xl border border-dark-700/50 rounded-2xl;
   }

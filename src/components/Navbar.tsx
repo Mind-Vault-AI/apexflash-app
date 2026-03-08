@@ -24,7 +24,7 @@ export default function Navbar() {
             <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-apex-500 to-apex-600 flex items-center justify-center">
               <Zap className="w-4 h-4 text-white" />
             </div>
-            <span className="text-lg font-bold gradient-text">ApexFlash</span>
+            <span className="text-xl font-extrabold gradient-hero tracking-tight">ApexFlash</span>
           </a>
 
           {/* Desktop links */}

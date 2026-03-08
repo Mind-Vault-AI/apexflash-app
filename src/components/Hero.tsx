@@ -30,11 +30,11 @@ export default function Hero() {
               Live whale tracking - 24/7
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 leading-[1.1]">
-              <span className="whitespace-nowrap"><span className="gradient-text">Whale Alerts</span> 🐋</span>
-              <br />
-              <span className="gradient-text">Smart Money</span>{' '}
-              <span className="whitespace-nowrap">Signals ⚡</span>
+            {/* Heading glow */}
+            <div className="absolute -top-4 left-0 w-[80%] h-24 bg-gradient-to-r from-blue-600/20 via-cyan-400/15 to-amber-400/10 blur-3xl pointer-events-none" />
+
+            <h1 className="relative text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-4 leading-[1.15] gradient-hero">
+              Whale Alerts <span className="emoji-reset">🐋</span> Smart Money Signals <span className="emoji-reset">⚡</span>
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">
