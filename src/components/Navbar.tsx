@@ -6,11 +6,9 @@ import { Menu, X, Zap } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Features', href: '#features' },
-  { label: 'Market', href: '#market' },
+  { label: 'Market Pulse', href: '#market-pulse' },
   { label: 'Exchanges', href: '#exchanges' },
-  { label: 'Reviews', href: '#reviews' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Help', href: '#help' },
   { label: 'FAQ', href: '#faq' },
 ];
 

@@ -14,7 +14,7 @@ const WHALES = [
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center pt-24 pb-6 overflow-hidden" style={{ minHeight: 'calc(100vh - 0px)' }}>
+    <section className="relative flex items-center pt-24 pb-6 overflow-hidden" style={{ minHeight: 'calc(85vh)' }}>
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-apex-900/20 via-dark-950 to-dark-950" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-apex-500/5 rounded-full blur-[100px]" />
@@ -31,18 +31,16 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 leading-[1.1]">
-              Follow the{' '}
-              <span className="gradient-text">Whales</span>{' '}
+              <span className="gradient-text">Whale Alerts</span>{' '}
               <span className="text-4xl sm:text-5xl lg:text-6xl">🐋</span>
               <br />
-              Trade the{' '}
-              <span className="whitespace-nowrap"><span className="gradient-text">Edge</span>{' '}<span className="text-3xl sm:text-4xl lg:text-5xl">⚡</span></span>
+              <span className="gradient-text">Smart Money</span> Signals{' '}
+              <span className="text-3xl sm:text-4xl lg:text-5xl">⚡</span>
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">
-              Track what top exchange wallets and institutional whales
-              do <strong className="text-white">before</strong> the market reacts.
-              Free alerts. Instant. On Telegram.
+              See what top wallets buy <strong className="text-white">before</strong> the pump.
+              Real-time crypto signals straight to Telegram — free.
             </p>
 
             {/* Single CTA - no confusion */}

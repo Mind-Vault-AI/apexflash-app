@@ -58,7 +58,7 @@ const SOCIAL_PROOFS = [
 
 export default function MarketPulse() {
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section id="market-pulse" className="py-12 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-apex-500/5 rounded-full blur-[100px]" />
 
