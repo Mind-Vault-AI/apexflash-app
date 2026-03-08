@@ -12,7 +12,6 @@ import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/EmailCapture';
 import Footer from '@/components/Footer';
-import SocialProofToast from '@/components/SocialProofToast';
 
 export default function Home() {
   return (
@@ -31,7 +30,6 @@ export default function Home() {
       <FAQ />
       <FinalCTA />
       <Footer />
-      <SocialProofToast />
     </main>
   );
 }

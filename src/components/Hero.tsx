@@ -32,10 +32,11 @@ export default function Hero() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 leading-[1.1]">
               Follow the{' '}
-              <span className="gradient-text">Whales.</span>
+              <span className="gradient-text">Whales</span>{' '}
+              <span className="text-4xl sm:text-5xl lg:text-6xl">🐋</span>
               <br />
               Trade the{' '}
-              <span className="gradient-text">Edge.</span>
+              <span className="whitespace-nowrap"><span className="gradient-text">Edge</span>{' '}<span className="text-3xl sm:text-4xl lg:text-5xl">⚡</span></span>
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">

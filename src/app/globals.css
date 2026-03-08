@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes shrinkBar {
-  from { width: 100%; }
-  to { width: 0%; }
-}
-
 @keyframes tickerScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -31,13 +26,13 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-apex-400 via-apex-300 to-emerald-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-apex-400 via-apex-300 to-cyan-300;
   }
   .glass-card {
     @apply bg-dark-900/60 backdrop-blur-xl border border-dark-700/50 rounded-2xl;
   }
   .glow-border {
-    @apply border border-apex-500/30 shadow-[0_0_15px_rgba(34,197,94,0.1)];
+    @apply border border-apex-500/30 shadow-[0_0_15px_rgba(6,182,212,0.1)];
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-apex-600 to-apex-500

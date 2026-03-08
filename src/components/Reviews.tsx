@@ -89,7 +89,7 @@ export default function Reviews() {
               </p>
 
               <div className="flex items-center gap-2 pt-1 border-t border-dark-800/50">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-apex-600 to-emerald-600 flex items-center justify-center text-xs font-bold text-white">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-apex-600 to-cyan-600 flex items-center justify-center text-xs font-bold text-white">
                   {review.name[0]}
                 </div>
                 <div>

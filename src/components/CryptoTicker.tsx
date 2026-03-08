@@ -70,13 +70,15 @@ const TICKER_ITEMS = [
   { cta: true, text: '🔥 Trade SOL nu via ApexFlash — 1% flat fee' },
   { symbol: 'RENDER', price: '$8.12', change: '+4.3%', up: true },
   { symbol: 'PYTH', price: '$0.41', change: '+6.9%', up: true },
+  { cta: true, text: '🚀 Thomas from Amsterdam joined ApexFlash — just now' },
   { symbol: 'JTO', price: '$3.54', change: '-1.2%', up: false },
   { symbol: 'RAY', price: '$2.18', change: '+9.1%', up: true },
-  { cta: true, text: '🐋 Whale alert: volg de grote jongens — gratis op Telegram' },
+  { cta: true, text: '🐋 Whale moved $4M SOL — 120+ users alerted' },
   { symbol: 'ONDO', price: '$1.32', change: '+3.5%', up: true },
   { symbol: 'HNT', price: '$5.67', change: '+2.8%', up: true },
+  { cta: true, text: '📈 Marco made +32% on BONK via ApexFlash' },
   { symbol: 'DOGE', price: '$0.182', change: '+1.4%', up: true },
-  { cta: true, text: '🚀 Rij mee op de wave — trade de hottest coins in 3 taps' },
+  { cta: true, text: '💎 Sven upgraded to Flash Elite — 5 min ago' },
 ];
 
 export default function CryptoTicker() {
