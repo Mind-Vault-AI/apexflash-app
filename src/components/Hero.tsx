@@ -31,11 +31,10 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 leading-[1.1]">
-              <span className="gradient-text">Whale Alerts</span>{' '}
-              <span className="text-4xl sm:text-5xl lg:text-6xl">🐋</span>
+              <span className="whitespace-nowrap"><span className="gradient-text">Whale Alerts</span> 🐋</span>
               <br />
-              <span className="gradient-text">Smart Money</span> Signals{' '}
-              <span className="text-3xl sm:text-4xl lg:text-5xl">⚡</span>
+              <span className="gradient-text">Smart Money</span>{' '}
+              <span className="whitespace-nowrap">Signals ⚡</span>
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">

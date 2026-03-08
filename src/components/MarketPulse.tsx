@@ -77,52 +77,58 @@ export default function MarketPulse() {
 
         <div className="grid lg:grid-cols-3 gap-6">
           {/* LEFT: Hot news / whale alerts */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-3 min-w-0">
             {HOT_NEWS.map((item, i) => (
-              <div key={i} className="glass-card p-4 flex items-center justify-between gap-4 group hover:border-apex-500/30 transition-all">
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <span className={`shrink-0 text-[10px] font-black px-2 py-0.5 rounded-full border ${item.tagColor}`}>
+              <div key={i} className="glass-card p-4 group hover:border-apex-500/30 transition-all">
+                <div className="flex items-start gap-3">
+                  <span className={`shrink-0 text-[10px] font-black px-2 py-0.5 rounded-full border mt-0.5 ${item.tagColor}`}>
                     {item.tag}
                   </span>
-                  <span className="text-sm text-white font-medium truncate">{item.text}</span>
-                  <a
-                    href={item.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 hidden sm:inline text-[10px] text-dark-500 hover:text-dark-400 transition-colors"
-                  >
-                    via {item.source}
-                  </a>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-white font-medium">{item.text}</p>
+                    <div className="flex items-center justify-between mt-2">
+                      <a
+                        href={item.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[10px] text-dark-500 hover:text-dark-400 transition-colors"
+                      >
+                        via {item.source}
+                      </a>
+                      <a
+                        href={CONFIG.telegram.apexBot}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-semibold text-apex-400 hover:text-apex-300 transition-colors"
+                      >
+                        {item.cta}
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <a
-                  href={CONFIG.telegram.apexBot}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-apex-400 hover:text-apex-300 transition-colors"
-                >
-                  {item.cta}
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                </a>
               </div>
             ))}
 
             {/* Urgency banner */}
             <div className="glass-card p-4 border-yellow-500/20 bg-yellow-500/5">
-              <div className="flex items-center gap-3">
-                <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0" />
-                <p className="text-sm text-yellow-200">
-                  <strong>Every minute without alerts = missed opportunities.</strong>{' '}
-                  <span className="text-yellow-400/70">Whales don&apos;t wait for you to sign up.</span>
-                </p>
-                <a
-                  href={CONFIG.telegram.apexBot}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shrink-0 btn-primary !py-2 !px-4 text-xs"
-                >
-                  <Zap className="w-3.5 h-3.5" />
-                  Start Now
-                </a>
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
+                <div className="flex-1">
+                  <p className="text-sm text-yellow-200">
+                    <strong>Every minute without alerts = missed opportunities.</strong>{' '}
+                    <span className="text-yellow-400/70">Whales don&apos;t wait for you to sign up.</span>
+                  </p>
+                  <a
+                    href={CONFIG.telegram.apexBot}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex btn-primary !py-2 !px-4 text-xs mt-3"
+                  >
+                    <Zap className="w-3.5 h-3.5" />
+                    Start Now
+                  </a>
+                </div>
               </div>
             </div>
 
