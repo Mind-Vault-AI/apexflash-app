@@ -9,19 +9,35 @@ const HOT_NEWS = [
     tagColor: 'bg-red-500/20 text-red-400 border-red-500/30',
     text: 'Bitcoin whales accumulated $2.8B in 72 hours',
     cta: 'Track BTC whales',
+    source: 'Etherscan',
+    sourceUrl: 'https://etherscan.io',
   },
   {
     tag: 'ALERT',
     tagColor: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
     text: 'SOL whale moved $47M to unknown wallet — dump incoming?',
     cta: 'Get SOL alerts',
+    source: 'Solscan',
+    sourceUrl: 'https://solscan.io',
   },
   {
     tag: 'HOT',
     tagColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     text: 'JUP token — 3 whales bought $8M in 24h',
     cta: 'Follow JUP whales',
+    source: 'DeFiLlama',
+    sourceUrl: 'https://defillama.com',
   },
+];
+
+const DATA_PARTNERS = [
+  { name: 'CoinGecko', url: 'https://www.coingecko.com', tag: 'Prices' },
+  { name: 'TradingView', url: 'https://www.tradingview.com', tag: 'Charts' },
+  { name: 'Etherscan', url: 'https://etherscan.io', tag: 'ETH Data' },
+  { name: 'Solscan', url: 'https://solscan.io', tag: 'SOL Data' },
+  { name: 'DeFiLlama', url: 'https://defillama.com', tag: 'DeFi' },
+  { name: 'CoinMarketCap', url: 'https://coinmarketcap.com', tag: 'Market Data' },
+  { name: 'Messari', url: 'https://messari.io', tag: 'Research' },
 ];
 
 const TRENDING_COINS = [
@@ -69,6 +85,14 @@ export default function MarketPulse() {
                     {item.tag}
                   </span>
                   <span className="text-sm text-white font-medium truncate">{item.text}</span>
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 hidden sm:inline text-[10px] text-dark-500 hover:text-dark-400 transition-colors"
+                  >
+                    via {item.source}
+                  </a>
                 </div>
                 <a
                   href={CONFIG.telegram.apexBot}
@@ -159,6 +183,29 @@ export default function MarketPulse() {
               <Zap className="w-4 h-4" />
               Track All Coins Free
             </a>
+          </div>
+        </div>
+
+        {/* Data Partners strip */}
+        <div className="mt-8 pt-6 border-t border-dark-800/30">
+          <p className="text-[10px] text-dark-600 text-center mb-3 uppercase tracking-wider font-semibold">
+            Powered by trusted data sources
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {DATA_PARTNERS.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-1.5 text-dark-500 hover:text-apex-400 transition-colors"
+              >
+                <span className="text-xs font-medium">{partner.name}</span>
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-dark-800/50 text-dark-600 group-hover:text-apex-400/70 group-hover:bg-apex-500/10 transition-all">
+                  {partner.tag}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>
