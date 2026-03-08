@@ -20,9 +20,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-apex-500 to-apex-600 flex items-center justify-center">
-              <Zap className="w-4 h-4 text-white" />
+          <a href="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 via-apex-500 to-amber-400 flex items-center justify-center shadow-lg shadow-apex-500/40 ring-2 ring-amber-400/20 group-hover:shadow-apex-400/60 transition-all duration-300">
+              <Zap className="w-5 h-5 text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]" />
             </div>
             <span className="text-xl font-extrabold gradient-hero tracking-tight">ApexFlash</span>
           </a>
