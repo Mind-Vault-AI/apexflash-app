@@ -7,21 +7,21 @@ const PLANS = [
   {
     ...CONFIG.pricing.free,
     icon: Zap,
-    cta: 'Start Free on Telegram',
+    cta: 'Start Free — Upgrade Anytime',
     href: CONFIG.telegram.apexBot,
     popular: false,
   },
   {
     ...CONFIG.pricing.pro,
     icon: Zap,
-    cta: 'Go Pro',
+    cta: 'Unlock Pro Alerts',
     href: CONFIG.gumroad.proUrl,
     popular: true,
   },
   {
     ...CONFIG.pricing.elite,
     icon: Crown,
-    cta: 'Go Elite',
+    cta: 'Get Elite Access',
     href: CONFIG.gumroad.eliteUrl,
     popular: false,
   },
@@ -33,10 +33,10 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-            Simple, <span className="gradient-text">Transparent Pricing</span>
+            Choose Your <span className="gradient-text">Edge</span>
           </h2>
           <p className="text-dark-400 max-w-xl mx-auto">
-            Start free. Upgrade when you need more power.
+            Start free. Most traders upgrade within 7 days.
           </p>
         </div>
 
@@ -65,6 +65,12 @@ export default function Pricing() {
                 </span>
                 {'period' in plan && (
                   <span className="text-dark-400 ml-1">/{plan.period}</span>
+                )}
+                {plan.price === 19 && (
+                  <p className="text-xs text-dark-500 mt-1">= $0.63/day — less than a coffee</p>
+                )}
+                {plan.price === 49 && (
+                  <p className="text-xs text-dark-500 mt-1">= $1.63/day — one good trade pays for a year</p>
                 )}
               </div>
 

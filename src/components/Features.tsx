@@ -4,19 +4,19 @@ const FEATURES = [
   {
     icon: Eye,
     title: 'Whale Tracking',
-    description: 'Real-time alerts when institutional wallets move millions. ETH, SOL, BTC - you see it first.',
+    description: 'When a whale moves $50M, the price moves within minutes. Without alerts, you see it after the pump. With ApexFlash, you see it first.',
     badge: 'Live',
   },
   {
     icon: Activity,
     title: 'AI Market Signals',
-    description: 'On-chain data + social sentiment + technical analysis = high-conviction trade setups.',
+    description: 'Gut feelings lose money. AI analyzes on-chain data, social sentiment, and technicals — so every trade has conviction, not hope.',
     badge: 'Active',
   },
   {
     icon: Shield,
     title: 'Risk Management',
-    description: 'Stop loss, take profit, trade limits, and slippage protection guard every trade. Set it and the bot watches — 24/7.',
+    description: 'One bad trade without a stop loss can wipe out 10 good ones. Automated SL/TP protects every position you hold — 24/7.',
     badge: 'Live',
   },
 ];
@@ -27,10 +27,10 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-            Your <span className="gradient-text">Trading Edge</span>
+            Stop <span className="gradient-text">Trading Blind</span>
           </h2>
           <p className="text-dark-400 max-w-xl mx-auto">
-            Professional tools that give retail traders an unfair advantage.
+            Without these tools, you&apos;re always one step behind the whales.
           </p>
         </div>
 

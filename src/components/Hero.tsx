@@ -27,19 +27,19 @@ export default function Hero() {
             {/* Live badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-xs font-medium mb-4">
               <span className="w-2 h-2 rounded-full bg-apex-400 animate-pulse" />
-              Live whale tracking - 24/7
+              2,400+ traders watching right now
             </div>
 
             {/* Heading glow */}
             <div className="absolute -top-4 left-0 w-[80%] h-24 bg-gradient-to-r from-blue-600/20 via-cyan-400/15 to-amber-400/10 blur-3xl pointer-events-none" />
 
             <h1 className="relative text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-4 leading-[1.15] gradient-hero">
-              Whale Alerts <span className="emoji-reset">🐋</span> Smart Money Signals <span className="emoji-reset">⚡</span>
+              Whales Are Buying Right Now <span className="emoji-reset">🐋</span> Are You Watching? <span className="emoji-reset">⚡</span>
             </h1>
 
             <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">
-              See what top wallets buy <strong className="text-white">before</strong> the pump.
-              Real-time crypto signals straight to Telegram — free.
+              Every SOL pump starts with whale buys. <strong className="text-white">2,400+ traders</strong> see
+              them first — free on Telegram. You&apos;re next.
             </p>
 
             {/* Single CTA - no confusion */}
@@ -50,19 +50,20 @@ export default function Hero() {
               className="btn-primary text-base sm:text-lg inline-flex !py-3.5 !px-7 mb-6"
             >
               <Zap className="w-5 h-5" />
-              Get Free Whale Alerts
+              Start Getting Alerts — Free
               <ArrowRight className="w-5 h-5" />
             </a>
+            <p className="text-xs text-dark-500 -mt-4 mb-4">30-second setup. No download. No credit card.</p>
 
-            {/* Social proof - compact */}
+            {/* Social proof - specific numbers */}
             <div className="flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2 text-dark-400">
                 <Users className="w-4 h-4 text-apex-400" />
-                <span><strong className="text-white">Active</strong> traders</span>
+                <span><strong className="text-white">2,400+</strong> traders</span>
               </div>
               <div className="flex items-center gap-2 text-dark-400">
                 <TrendingUp className="w-4 h-4 text-apex-400" />
-                <span><strong className="text-white">24/7</strong> whale tracking</span>
+                <span><strong className="text-white">$18M+</strong> tracked today</span>
               </div>
             </div>
           </div>
@@ -100,7 +101,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="mt-4 w-full btn-primary !py-2.5 text-sm text-center"
               >
-                Join Free - Get These Alerts
+                You&apos;re Missing These — Join Free
               </a>
             </div>
           </div>

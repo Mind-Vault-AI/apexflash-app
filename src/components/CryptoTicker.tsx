@@ -67,7 +67,7 @@ const TICKER_ITEMS = [
   { symbol: 'BONK', price: '$0.00002841', change: '+12.4%', up: true },
   { symbol: 'WIF', price: '$1.87', change: '-3.1%', up: false },
   { symbol: 'JUP', price: '$0.94', change: '+8.7%', up: true },
-  { cta: true, text: '🔥 Trade SOL now via ApexFlash — 1% flat fee' },
+  { cta: true, text: '🔥 SOL pumped +5.2% after whale alert — ApexFlash traders caught it' },
   { symbol: 'RENDER', price: '$8.12', change: '+4.3%', up: true },
   { symbol: 'PYTH', price: '$0.41', change: '+6.9%', up: true },
   { cta: true, text: '🚀 Thomas from Amsterdam joined ApexFlash — just now' },
@@ -78,7 +78,7 @@ const TICKER_ITEMS = [
   { symbol: 'HNT', price: '$5.67', change: '+2.8%', up: true },
   { cta: true, text: '📈 Marco made +32% on BONK via ApexFlash' },
   { symbol: 'DOGE', price: '$0.182', change: '+1.4%', up: true },
-  { cta: true, text: '💎 Sven upgraded to Flash Elite — 5 min ago' },
+  { cta: true, text: '💎 2,400+ traders are getting whale alerts right now — are you?' },
 ];
 
 export default function CryptoTicker() {

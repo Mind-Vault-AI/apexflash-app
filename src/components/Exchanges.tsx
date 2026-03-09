@@ -51,10 +51,10 @@ export default function Exchanges() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-            Trade on <span className="gradient-text">Top Exchanges</span>
+            Trade Smarter on <span className="gradient-text">Top Exchanges</span>
           </h2>
           <p className="text-dark-400 max-w-xl mx-auto">
-            Exclusive fee discounts when you sign up through ApexFlash.
+            Exclusive fee discounts — save hundreds per month. Only through ApexFlash.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function Exchanges() {
         </div>
 
         <p className="text-center text-dark-600 text-xs mt-6">
-          ApexFlash may receive referral commissions. This funds free tools for the community.
+          ApexFlash earns referral commissions — this funds free whale alerts and tools for the community.
         </p>
       </div>
     </section>
