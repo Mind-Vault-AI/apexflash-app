@@ -23,10 +23,10 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-16 relative">
+    <section id="features" className="py-10 sm:py-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        <div className="text-center mb-6 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3">
             Stop <span className="gradient-text">Trading Blind</span>
           </h2>
           <p className="text-dark-400 max-w-xl mx-auto">
@@ -34,11 +34,11 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-3 sm:gap-5">
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="glass-card p-6 hover:border-apex-500/30 transition-all duration-300 group"
+              className="glass-card p-4 sm:p-6 hover:border-apex-500/30 transition-all duration-300 group"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="w-10 h-10 rounded-xl bg-apex-500/10 flex items-center justify-center group-hover:bg-apex-500/20 transition-colors">

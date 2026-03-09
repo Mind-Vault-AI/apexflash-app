@@ -9,7 +9,7 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
       href={exchange.affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`glass-card p-6 hover:border-apex-500/30 transition-all duration-300 group block ${
+      className={`glass-card p-4 sm:p-6 hover:border-apex-500/30 transition-all duration-300 group block ${
         exchange.tier === 'featured' ? 'glow-border md:col-span-2 lg:col-span-1' : ''
       }`}
     >
@@ -46,11 +46,11 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 
 export default function Exchanges() {
   return (
-    <section id="exchanges" className="py-16 relative">
+    <section id="exchanges" className="py-10 sm:py-16 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900/50 to-dark-950" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        <div className="text-center mb-6 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3">
             Trade Smarter on <span className="gradient-text">Top Exchanges</span>
           </h2>
           <p className="text-dark-400 max-w-xl mx-auto">

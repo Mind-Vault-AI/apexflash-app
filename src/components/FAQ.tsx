@@ -38,10 +38,10 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 sm:py-20">
+    <section id="faq" className="py-10 sm:py-16 lg:py-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        <div className="text-center mb-6 sm:mb-12">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3">
             Frequently asked <span className="gradient-text">questions</span>
           </h2>
           <p className="text-dark-400">

@@ -58,18 +58,18 @@ const SOCIAL_PROOFS = [
 
 export default function MarketPulse() {
   return (
-    <section id="market-pulse" className="py-12 relative overflow-hidden">
+    <section id="market-pulse" className="py-8 sm:py-12 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-apex-500/5 rounded-full blur-[100px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold mb-3">
+        <div className="text-center mb-5 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold mb-2 sm:mb-3">
             <Flame className="w-3.5 h-3.5" />
             LIVE MARKET PULSE
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="text-xl sm:text-3xl font-bold text-white">
             This Is What You&apos;re <span className="gradient-text">Missing</span>
           </h2>
           <p className="text-dark-400 mt-2 text-sm">Right now. Real moves. Real money. Are you watching?</p>

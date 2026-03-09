@@ -14,7 +14,7 @@ const WHALES = [
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center pt-24 pb-6 overflow-hidden" style={{ minHeight: 'calc(85vh)' }}>
+    <section className="relative flex items-center pt-24 pb-3 sm:pb-6 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-apex-900/20 via-dark-950 to-dark-950" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-apex-500/5 rounded-full blur-[100px]" />
@@ -25,7 +25,7 @@ export default function Hero() {
           {/* LEFT: Copy + CTA */}
           <div>
             {/* Live badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-xs font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-xs font-medium mb-2 sm:mb-4">
               <span className="w-2 h-2 rounded-full bg-apex-400 animate-pulse" />
               2,400+ traders watching right now
             </div>
@@ -33,11 +33,11 @@ export default function Hero() {
             {/* Heading glow */}
             <div className="absolute -top-4 left-0 w-[80%] h-24 bg-gradient-to-r from-blue-600/20 via-cyan-400/15 to-amber-400/10 blur-3xl pointer-events-none" />
 
-            <h1 className="relative text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-4 leading-[1.15] gradient-hero">
+            <h1 className="relative text-2xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-2 sm:mb-4 leading-[1.15] gradient-hero">
               Whales Are Buying Right Now <span className="emoji-reset">🐋</span> Are You Watching? <span className="emoji-reset">⚡</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-dark-300 max-w-lg mb-6 leading-relaxed">
+            <p className="text-sm sm:text-lg text-dark-300 max-w-lg mb-4 sm:mb-6 leading-relaxed">
               Every SOL pump starts with whale buys. <strong className="text-white">2,400+ traders</strong> see
               them first — free on Telegram. You&apos;re next.
             </p>
@@ -47,13 +47,13 @@ export default function Hero() {
               href={CONFIG.telegram.apexBot}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base sm:text-lg inline-flex !py-3.5 !px-7 mb-6"
+              className="btn-primary text-base sm:text-lg inline-flex !py-3 !px-6 sm:!py-3.5 sm:!px-7 mb-3 sm:mb-6"
             >
               <Zap className="w-5 h-5" />
               Start Getting Alerts — Free
               <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-xs text-dark-500 -mt-4 mb-4">30-second setup. No download. No credit card.</p>
+            <p className="text-xs text-dark-500 -mt-1.5 mb-2 sm:-mt-4 sm:mb-4">30-second setup. No download. No credit card.</p>
 
             {/* Social proof - specific numbers */}
             <div className="flex items-center gap-6 text-sm">
@@ -108,9 +108,9 @@ export default function Hero() {
         </div>
 
         {/* Bottom bar - exchange logos as trust signals */}
-        <div className="mt-6 pt-4 border-t border-dark-800/30">
-          <p className="text-xs text-dark-500 text-center mb-3">Tracking whales across top exchanges</p>
-          <div className="flex items-center justify-center gap-6 sm:gap-10 text-sm font-medium">
+        <div className="mt-3 pt-3 sm:mt-6 sm:pt-4 border-t border-dark-800/30">
+          <p className="text-xs text-dark-500 text-center mb-2 sm:mb-3">Tracking whales across top exchanges</p>
+          <div className="flex items-center justify-center gap-4 sm:gap-10 text-xs sm:text-sm font-medium">
             {[
               { name: 'Bitunix', url: 'https://www.bitunix.com/register?vipCode=xc6jzk' },
               { name: 'Binance', url: 'https://accounts.binance.com/register' },
