@@ -90,7 +90,7 @@ export const EXCHANGES: Exchange[] = [
     slug: 'blofin',
     name: 'BloFin',
     logo: '🐋',
-    affiliateUrl: process.env.NEXT_PUBLIC_BLOFIN_AFFILIATE_URL || 'https://www.blofin.com/register',
+    affiliateUrl: process.env.NEXT_PUBLIC_BLOFIN_AFFILIATE_URL || 'https://www.blofin.com/register?referral_code=b996a0111c1b4497b53d9b3cc82e4539',
     commission: 'Up to 50% commission',
     description: 'Whale-grade derivatives exchange with deep liquidity and copy trading.',
     features: ['Copy Trading', '150x Leverage', 'Low Fees', 'Futures Focus'],
