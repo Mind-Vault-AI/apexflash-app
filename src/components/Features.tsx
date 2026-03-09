@@ -16,8 +16,8 @@ const FEATURES = [
   {
     icon: Shield,
     title: 'Risk Management',
-    description: 'Trade limits, slippage protection, and price impact warnings guard every trade. Confirm before you execute — no surprises.',
-    badge: 'Active',
+    description: 'Stop loss, take profit, trade limits, and slippage protection guard every trade. Set it and the bot watches — 24/7.',
+    badge: 'Live',
   },
 ];
 
