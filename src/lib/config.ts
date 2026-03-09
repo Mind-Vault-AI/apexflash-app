@@ -12,8 +12,8 @@ export const CONFIG = {
     channel: 'https://t.me/ApexFlashAlerts',
   },
   gumroad: {
-    proUrl: process.env.NEXT_PUBLIC_GUMROAD_PRO_URL || 'https://mindvault34.gumroad.com/l/pctpy',
-    eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/rwauqu',
+    proUrl: process.env.NEXT_PUBLIC_GUMROAD_PRO_URL || 'https://mindvault34.gumroad.com/l/rwauqu',
+    eliteUrl: process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL || 'https://mindvault34.gumroad.com/l/unetcl',
   },
   social: {
     twitter: 'https://x.com/MindVault_ai',
