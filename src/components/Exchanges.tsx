@@ -4,17 +4,11 @@ import { EXCHANGES, type Exchange } from '@/lib/affiliates';
 import { ArrowUpRight, Star } from 'lucide-react';
 
 function ExchangeCard({ exchange }: { exchange: Exchange }) {
-  const handleClick = () => {
-    // Track affiliate click (server-side tracking)
-    fetch(`/api/affiliate/${exchange.slug}`, { method: 'POST' }).catch(() => {});
-  };
-
   return (
     <a
       href={exchange.affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={handleClick}
       className={`glass-card p-6 hover:border-apex-500/30 transition-all duration-300 group block ${
         exchange.tier === 'featured' ? 'glow-border md:col-span-2 lg:col-span-1' : ''
       }`}

@@ -17,6 +17,9 @@ export const CONFIG = {
   },
   social: {
     twitter: 'https://x.com/MindVault_ai',
+    discord: 'https://discord.gg/apexflash',
+    tiktok: 'https://www.tiktok.com/@apexflash.pro',
+    reddit: 'https://www.reddit.com/user/Suspicious-Guess3762',
   },
   pricing: {
     free: {

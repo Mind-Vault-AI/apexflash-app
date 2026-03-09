@@ -67,7 +67,7 @@ const TICKER_ITEMS = [
   { symbol: 'BONK', price: '$0.00002841', change: '+12.4%', up: true },
   { symbol: 'WIF', price: '$1.87', change: '-3.1%', up: false },
   { symbol: 'JUP', price: '$0.94', change: '+8.7%', up: true },
-  { cta: true, text: '🔥 Trade SOL nu via ApexFlash — 1% flat fee' },
+  { cta: true, text: '🔥 Trade SOL now via ApexFlash — 1% flat fee' },
   { symbol: 'RENDER', price: '$8.12', change: '+4.3%', up: true },
   { symbol: 'PYTH', price: '$0.41', change: '+6.9%', up: true },
   { cta: true, text: '🚀 Thomas from Amsterdam joined ApexFlash — just now' },

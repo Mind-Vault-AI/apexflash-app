@@ -40,7 +40,27 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-dark-400">
               <li>
                 <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Telegram
+                  Telegram Bot
+                </a>
+              </li>
+              <li>
+                <a href={CONFIG.telegram.channel} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                  Whale Alerts Channel
+                </a>
+              </li>
+              <li>
+                <a href={CONFIG.social.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                  Twitter / X
+                </a>
+              </li>
+              <li>
+                <a href={CONFIG.social.discord} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                  Discord
+                </a>
+              </li>
+              <li>
+                <a href={CONFIG.social.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
+                  TikTok
                 </a>
               </li>
               <li>
