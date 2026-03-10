@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@ApexFlashPro',
+    site: '@MindVault_ai',
     title: 'ApexFlash | Solana Trading Bot on Telegram',
     description: 'Trade SOL tokens from Telegram. Jupiter V6, 1% fee, whale alerts.',
   },
