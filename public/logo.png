@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" width="480" height="120">
+  <defs>
+    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="40%" stop-color="#0891b2"/>
+      <stop offset="70%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="30%" stop-color="#0891b2"/>
+      <stop offset="55%" stop-color="#22d3ee"/>
+      <stop offset="90%" stop-color="#fde047"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow2">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0891b2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Icon background -->
+  <rect x="10" y="10" width="100" height="100" rx="22" ry="22" fill="url(#icon-grad)" filter="url(#shadow2)"/>
+  <!-- Lightning bolt -->
+  <g transform="translate(60, 60) scale(2.2)" filter="url(#glow2)">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" transform="translate(-12, -12)" fill="white"/>
+  </g>
+  <!-- ApexFlash text -->
+  <text x="130" y="76" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="52" font-weight="800" letter-spacing="-1" fill="url(#text-grad)">ApexFlash</text>
+</svg>

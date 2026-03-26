@@ -1,0 +1,25 @@
+{
+  "name": "ApexFlash — AI Whale Intelligence",
+  "short_name": "ApexFlash",
+  "description": "AI detects what whales buy. Signal grading, win rate tracking, 1-tap buy via Jupiter. Free on Telegram.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "crypto"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

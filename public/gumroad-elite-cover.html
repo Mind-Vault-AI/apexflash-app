@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1280px; height: 720px; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.cover {
+  width: 1280px; height: 720px;
+  background: linear-gradient(135deg, #020617 0%, #0a0f1f 20%, #0d1530 40%, #0a1228 60%, #050d1a 80%, #020617 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+/* Premium gold + cyan overlay */
+.cover::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(6,182,212,0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 30%, rgba(250,204,21,0.06) 0%, transparent 40%),
+              radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 60%);
+}
+/* Grid pattern */
+.cover::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(rgba(250,204,21,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(6,182,212,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.content { position: relative; z-index: 2; display: flex; align-items: center; gap: 80px; padding: 0 80px; }
+.left { flex: 1; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, rgba(250,204,21,0.15), rgba(250,204,21,0.05));
+  border: 1px solid rgba(250,204,21,0.3);
+  border-radius: 50px; padding: 8px 18px; margin-bottom: 24px;
+  font-size: 14px; font-weight: 700; color: #fcd34d; letter-spacing: 1px;
+}
+.badge .crown { font-size: 16px; }
+h1 { font-size: 64px; font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; }
+h1 .gold {
+  background: linear-gradient(135deg, #fcd34d, #f59e0b, #fbbf24);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+h1 .cyan {
+  background: linear-gradient(135deg, #22d3ee, #67e8f9);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.subtitle { font-size: 20px; color: #94a3b8; line-height: 1.5; margin-bottom: 32px; max-width: 480px; }
+.price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 32px; }
+.price { font-size: 56px; font-weight: 800; color: white; }
+.period { font-size: 20px; color: #64748b; }
+.was { font-size: 16px; color: #475569; text-decoration: line-through; margin-left: 8px; }
+.features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.features li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 16px; color: #cbd5e1;
+}
+.features li::before { content: '👑'; font-size: 14px; }
+.right { flex-shrink: 0; }
+.card {
+  width: 340px; background: rgba(15,23,42,0.8);
+  border: 1px solid rgba(250,204,21,0.2); border-radius: 24px;
+  padding: 32px; backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px rgba(250,204,21,0.08), 0 0 120px rgba(6,182,212,0.05);
+}
+.card-header { text-align: center; margin-bottom: 24px; }
+.card-icon { font-size: 48px; margin-bottom: 12px; }
+.card-title { font-size: 24px; font-weight: 700; color: #fcd34d; }
+.card-subtitle { font-size: 14px; color: #64748b; margin-top: 4px; }
+.card-divider { height: 1px; background: rgba(250,204,21,0.15); margin: 16px 0; }
+.card-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.card-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #94a3b8; }
+.card-features li::before { content: '⚡'; font-size: 14px; }
+.card-bonus {
+  margin-top: 16px; padding: 12px; border-radius: 12px;
+  background: rgba(250,204,21,0.08); border: 1px solid rgba(250,204,21,0.15);
+  text-align: center; font-size: 13px; color: #fcd34d; font-weight: 600;
+}
+.logo {
+  position: absolute; top: 40px; left: 60px; z-index: 3;
+  display: flex; align-items: center; gap: 12px;
+}
+.logo-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: linear-gradient(135deg, #0891b2, #06b6d4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: white; font-weight: 700;
+}
+.logo-text { font-size: 22px; font-weight: 700; color: white; }
+.logo-text span {
+  background: linear-gradient(135deg, #22d3ee, #67e8f9);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.whale { position: absolute; bottom: 30px; right: 60px; font-size: 70px; opacity: 0.1; z-index: 1; }
+.elite-tag {
+  position: absolute; top: 40px; right: 60px; z-index: 3;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #020617; font-size: 13px; font-weight: 800; letter-spacing: 1px;
+  padding: 8px 20px; border-radius: 50px;
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-text">Apex<span>Flash</span></div>
+  </div>
+  <div class="elite-tag">ELITE TIER</div>
+  <div class="whale">🐋</div>
+  <div class="content">
+    <div class="left">
+      <div class="badge"><span class="crown">👑</span> FLASH ELITE</div>
+      <h1>The <span class="gold">Ultimate</span><br>Trading <span class="cyan">Arsenal</span></h1>
+      <p class="subtitle">Everything in Pro plus private signals, arbitrage alerts, backtesting, and personal onboarding. For traders who demand the best.</p>
+      <div class="price-row">
+        <span class="price">$49</span>
+        <span class="period">/month</span>
+      </div>
+      <ul class="features">
+        <li>Everything in Flash Pro included</li>
+        <li>Private elite signals channel</li>
+        <li>Arbitrage opportunity alerts</li>
+        <li>Portfolio risk analysis</li>
+        <li>Strategy backtesting engine</li>
+        <li>1-on-1 onboarding call</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">👑</div>
+          <div class="card-title">Flash Elite</div>
+          <div class="card-subtitle">The complete package</div>
+        </div>
+        <div class="card-divider"></div>
+        <ul class="card-features">
+          <li>All Pro features unlocked</li>
+          <li>Exclusive signals channel</li>
+          <li>Cross-exchange arbitrage</li>
+          <li>Risk scoring per position</li>
+          <li>Historical strategy replay</li>
+          <li>Direct line to the team</li>
+        </ul>
+        <div class="card-bonus">🎯 Limited: First 50 Elites get lifetime rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
