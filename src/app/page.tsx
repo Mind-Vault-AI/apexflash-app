@@ -31,8 +31,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <BotQRCard />
-      <TradingSignals />
       <LiveTrades />
+      <TradingSignals />
       <Exchanges />
       <TopWhales />
       <LiveChart />

@@ -51,12 +51,12 @@ export default function Hero() {
 
             {/* Heading — compact */}
             <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-2 leading-[1.1] gradient-hero">
-              See What Whales Buy <span className="emoji-reset">🐋</span><br className="sm:hidden" /> Before the Pump <span className="emoji-reset">⚡</span>
+              Whale Spotted <span className="emoji-reset">🐋</span> Bot Executes <span className="emoji-reset">⚡</span><br className="sm:hidden" /> You Profit
             </h1>
 
             {/* One-liner value prop */}
             <p className="text-sm sm:text-base text-dark-300 max-w-lg mb-3 leading-snug">
-              AI detects whale token swaps and grades every signal <strong className="text-white">A-D</strong>. 1-tap buy included. <strong className="text-white">Free on Telegram.</strong>
+              AI spots whale token swaps, grades every signal <strong className="text-white">A-D</strong>, and executes the trade in 1 tap. Auto stop-loss included. <strong className="text-white">Free on Telegram.</strong>
             </p>
 
             {/* CTA — big and clear */}
@@ -67,7 +67,7 @@ export default function Hero() {
               className="btn-primary text-base sm:text-lg inline-flex !py-3 !px-6 sm:!py-3.5 sm:!px-7 mb-3"
             >
               <Zap className="w-5 h-5" />
-              Start Getting Alerts — Free
+              Let the Bot Trade For You — Free
               <ArrowRight className="w-5 h-5" />
             </a>
 
@@ -75,20 +75,20 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-2 mb-3">
               <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
                 <Shield className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                <span>AI Rugpull Filter</span>
+                <span>Auto Stop-Loss</span>
               </div>
               <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
                 <Eye className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                <span>Real-time Alerts</span>
+                <span>1-Tap Execution</span>
               </div>
               <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
                 <BarChart3 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span>Win Rate Tracking</span>
+                <span>{stats.winRate}% Win Rate</span>
               </div>
             </div>
 
             {/* Micro trust line */}
-            <p className="text-[10px] sm:text-xs text-dark-500 mb-2">30-second setup. No download. No credit card. No catch.</p>
+            <p className="text-[10px] sm:text-xs text-dark-500 mb-2">30-second setup. No download. No credit card. Bot does the work.</p>
 
             {/* Stats bar — compact */}
             <div className="flex items-center gap-3 sm:gap-5 text-xs flex-wrap">
@@ -154,7 +154,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="mt-3 w-full btn-primary !py-2 text-sm text-center"
               >
-                You&apos;re Missing These — Join Free
+                Let the Bot Trade These For You
               </a>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react';
+import { CONFIG } from '@/lib/config';
 
 interface Trade {
   token: string;
@@ -141,7 +142,7 @@ export default function LiveTrades() {
         {/* CTA */}
         <div className="mt-6 text-center">
           <a
-            href="https://t.me/ApexFlashBot"
+            href={CONFIG.telegram.apexBot}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"
