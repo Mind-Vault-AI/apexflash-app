@@ -27,6 +27,7 @@ export default function Footer() {
               <li><a href="#features" className="hover:text-apex-400 transition-colors">Features</a></li>
               <li><a href="#pricing" className="hover:text-apex-400 transition-colors">Pricing</a></li>
               <li><a href="#exchanges" className="hover:text-apex-400 transition-colors">Exchanges</a></li>
+              <li><a href="/about" className="hover:text-apex-400 transition-colors">About</a></li>
               <li>
                 <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
                   ApexFlash Bot
