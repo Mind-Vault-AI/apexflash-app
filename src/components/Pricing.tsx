@@ -67,7 +67,7 @@ export default function Pricing() {
                   <span className="text-dark-400 ml-1">/{plan.period}</span>
                 )}
                 {plan.price === 9.99 && (
-                  <p className="text-xs text-dark-500 mt-1">= $0.33/day — one good trade pays for a year</p>
+                  <p className="text-xs text-green-400 mt-1 font-medium">1 week free trial — then $0.33/day</p>
                 )}
                 {plan.price === 29.99 && (
                   <p className="text-xs text-dark-500 mt-1">= $1/day — unlimited whale intelligence</p>

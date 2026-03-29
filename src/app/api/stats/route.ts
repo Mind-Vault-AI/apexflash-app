@@ -48,8 +48,8 @@ export async function GET() {
     const winRate = totalT > 0 ? Math.round((totalW / totalT) * 100) : 0;
 
     // Use real data if available, otherwise reasonable baseline
-    const displayUsers = users > 100 ? users : 2400;
-    const displayVolume = volume > 1000 ? `$${(volume / 1e6).toFixed(1)}M` : '$18M+';
+    const displayUsers = users > 0 ? users : 3;
+    const displayVolume = volume > 1000 ? `$${(volume / 1e6).toFixed(1)}M` : '$39K+';
     const displayTrades = tradesDay > 0 ? tradesDay : undefined;
     const displayWinRate = totalT >= 10 ? winRate : undefined;
 
@@ -68,8 +68,8 @@ export async function GET() {
   } catch {
     // Fallback
     return NextResponse.json({
-      users: 2400,
-      volume: '$18M+',
+      users: 3,
+      volume: '$39K+',
       updatedAt: new Date().toISOString(),
     });
   }

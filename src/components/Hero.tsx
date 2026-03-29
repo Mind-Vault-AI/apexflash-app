@@ -5,7 +5,7 @@ import { CONFIG } from '@/lib/config';
 import { ArrowRight, Zap, Users, TrendingUp, Trophy, Shield, Eye, BarChart3 } from 'lucide-react';
 
 export default function Hero() {
-  const [stats, setStats] = useState({ users: 2400, volume: '$18M+', winRate: 68, tradesToday: 0 });
+  const [stats, setStats] = useState({ users: 3, volume: '$39K+', winRate: 50, tradesToday: 0 });
 
   useEffect(() => {
     fetch('/api/stats')
@@ -20,16 +20,7 @@ export default function Hero() {
         .catch(() => {});
     }, 60000);
 
-    setStats(s => ({ ...s, users: s.users + Math.floor(Math.random() * 180) }));
-
-    const tickInterval = setInterval(() => {
-      setStats(s => ({
-        ...s,
-        users: s.users + (Math.random() > 0.4 ? Math.floor(Math.random() * 3) + 1 : -Math.floor(Math.random() * 2)),
-      }));
-    }, 15000);
-
-    return () => { clearInterval(statsInterval); clearInterval(tickInterval); };
+    return () => { clearInterval(statsInterval); };
   }, []);
 
   return (
@@ -46,7 +37,7 @@ export default function Hero() {
             {/* Live badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-xs font-medium mb-2">
               <span className="w-2 h-2 rounded-full bg-apex-400 animate-pulse" />
-              {stats.users.toLocaleString()}+ traders watching right now
+              Live whale tracking — Solana + Ethereum
             </div>
 
             {/* Heading — compact */}
@@ -94,7 +85,7 @@ export default function Hero() {
             <div className="flex items-center gap-3 sm:gap-5 text-xs flex-wrap">
               <div className="flex items-center gap-1.5 text-dark-400">
                 <Users className="w-3.5 h-3.5 text-apex-400" />
-                <strong className="text-white">{stats.users.toLocaleString()}+</strong> traders
+                <strong className="text-white">20</strong> trades executed
               </div>
               <div className="flex items-center gap-1.5 text-dark-400">
                 <TrendingUp className="w-3.5 h-3.5 text-apex-400" />

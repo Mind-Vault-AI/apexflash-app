@@ -57,7 +57,7 @@ interface CoinData {
 
 const CTA_MESSAGES = [
   '🔥 Whale alert just fired — ApexFlash traders saw it first',
-  '🚀 Join 2,400+ traders getting free whale alerts',
+  '🚀 Free whale alerts — ETH + SOL — @ApexFlashBot',
   '🐋 See what whales buy BEFORE the pump — free on Telegram',
   '💎 AI grades every signal A-D — only the best reach you',
   '📈 Win rate tracking, copy trading, 1-tap buy — all free',

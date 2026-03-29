@@ -18,7 +18,7 @@ export const CONFIG = {
   social: {
     twitter: 'https://x.com/MindVault_ai',
     discord: 'https://discord.gg/apexflash',
-    tiktok: 'https://www.tiktok.com/@apexflash.pro',
+    tiktok: 'https://www.tiktok.com/@wox.apex',
     reddit: '',
   },
   pricing: {
@@ -39,7 +39,9 @@ export const CONFIG = {
       name: 'Flash Pro',
       price: 9.99,
       period: 'month',
+      trial: '1 week free trial',
       features: [
+        '1 week free trial — try before you pay',
         'Everything in Free',
         'Trade as many times as you want — no daily cap',
         'Full AI breakdown per signal — know exactly why to buy',

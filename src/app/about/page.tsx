@@ -5,7 +5,7 @@ import { Shield, Target, Zap, Users, TrendingUp, Bot } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'About ApexFlash — Built by a Trader, For Traders',
   description:
-    'ApexFlash is an AI-powered whale tracking and trade execution bot built by Erik U. in Amsterdam. Our mission: democratise smart-money trading for every crypto trader.',
+    'ApexFlash is an AI-powered whale tracking and trade execution bot built by Erik Uijttenboogaart in Amsterdam. Our mission: democratise smart-money trading for every crypto trader.',
   openGraph: {
     title: 'About ApexFlash',
     description: 'Built by a trader, for traders. AI whale signals + automated execution.',
@@ -41,7 +41,7 @@ const values = [
   {
     icon: Users,
     title: 'Community = Moat',
-    desc: 'The best alpha comes from collective whale tracking. 2,000+ traders watching 100 wallets beats one person watching 10.',
+    desc: 'The best alpha comes from collective whale tracking. More traders watching more wallets means better coverage for everyone.',
   },
 ];
 
@@ -50,7 +50,7 @@ const milestones = [
   { date: 'Feb 2026', event: 'Solana chain added — 1-tap token swap via Jupiter V6' },
   { date: 'Mar 2026', event: 'CryptoBERT AI grading live — Grade A/B filter active' },
   { date: 'Mar 2026', event: 'PWA launched — push notifications, live dashboard' },
-  { date: 'Mar 2026', event: '2,000+ active users, 5 affiliate partnerships' },
+  { date: 'Mar 2026', event: 'Public launch — Pro $9.99/mo, Elite $29.99/mo' },
   { date: 'Q2 2026', event: 'War Watch (geopolitical signals) — in development' },
 ];
 
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 E
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white mb-1">Erik U.</h2>
+                <h2 className="text-xl font-bold text-white mb-1">Erik Uijttenboogaart</h2>
                 <p className="text-sm text-primary-400 mb-4">Founder &amp; Builder — Amsterdam, NL</p>
                 <p className="text-dark-300 leading-relaxed mb-4">
                   I&apos;ve traded crypto since 2017. The pattern I kept seeing: whale wallets moved,

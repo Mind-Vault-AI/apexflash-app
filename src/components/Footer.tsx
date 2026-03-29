@@ -15,7 +15,7 @@ export default function Footer() {
               <span className="text-lg font-bold gradient-text">ApexFlash</span>
             </div>
             <p className="text-dark-400 text-sm leading-relaxed max-w-sm">
-              AI-powered crypto trading intelligence. Built by traders, for traders.
+              AI-powered crypto trading intelligence. Built by Erik Uijttenboogaart.
               A MindVault-AI project.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <div className="border-t border-dark-800/50 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-dark-500 text-xs">
-            &copy; {new Date().getFullYear()} ApexFlash by MindVault-AI. All rights reserved.
+            &copy; {new Date().getFullYear()} ApexFlash by Erik Uijttenboogaart / MindVault-AI. All rights reserved.
           </p>
           <p className="text-dark-600 text-xs">
             Trading crypto involves risk. Past performance does not guarantee future results. Not financial advice.
