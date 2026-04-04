@@ -21,26 +21,27 @@ export const CONFIG = {
     tiktok: 'https://www.tiktok.com/@wox.apex',
     reddit: '',
   },
+// <KAIZEN_PRICING_START>
   pricing: {
-    free: {
-      name: 'Free Forever',
-      price: 0,
-      features: [
+    'free': {
+      'name': 'Free Forever',
+      'price': 0,
+      'features': [
         'Bot alerts you the moment a whale moves — ETH + SOL',
         'AI filters noise — only Grade A/B signals in your feed',
         'Bot buys in 1 tap — no manual chart watching needed',
         'Auto stop-loss & take-profit — bot protects your trade',
         'Track your win rate live — see your edge in numbers',
         'Unlock $8K+ exchange bonuses via affiliate deals',
-        'Only 1% per trade — no subscription required',
-      ],
+        'Only 1% per trade — no subscription required'
+      ]
     },
-    pro: {
-      name: 'Flash Pro',
-      price: 9.99,
-      period: 'month',
-      trial: '1 week free trial',
-      features: [
+    'pro': {
+      'name': 'Flash Pro',
+      'price': 9.99,
+      'period': 'month',
+      'trial': '1 week free trial',
+      'features': [
         '1 week free trial — try before you pay',
         'Everything in Free',
         'Trade as many times as you want — no daily cap',
@@ -49,14 +50,14 @@ export const CONFIG = {
         'Copy the bot automatically via Mizar — zero effort trading',
         'DCA Bot builds your position automatically',
         'Track 20 wallets — follow any whale manually',
-        '0.75% trade fee — save 25% vs free tier',
-      ],
+        '0.75% trade fee — save 25% vs free tier'
+      ]
     },
-    elite: {
-      name: 'Flash Elite',
-      price: 29.99,
-      period: 'month',
-      features: [
+    'elite': {
+      'name': 'Flash Elite',
+      'price': 29.99,
+      'period': 'month',
+      'features': [
         'Everything in Pro',
         'Catch whales on ALL chains — ETH, SOL, BSC, ARB, BASE',
         'Whale convergence alerts — when 3+ whales agree, act fast',
@@ -64,8 +65,9 @@ export const CONFIG = {
         'Track 100 wallets — full smart money coverage',
         'Private alpha group — early signals before the crowd',
         '0.5% trade fee — save 50% on every execution',
-        'Priority support — get answers in minutes, not hours',
-      ],
-    },
+        'Priority support — get answers in minutes, not hours'
+      ]
+    }
   },
+// <KAIZEN_PRICING_END>
 } as const;
