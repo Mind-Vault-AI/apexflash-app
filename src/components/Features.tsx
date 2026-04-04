@@ -15,9 +15,9 @@ const FEATURES = [
   },
   {
     icon: Shield,
-    title: 'Risk Management',
-    description: 'One bad trade without a stop loss can wipe out 10 good ones. Automated SL/TP protects every position you hold — 24/7.',
-    badge: 'Live',
+    title: 'Zero-Loss Engine (Godmode)',
+    description: 'Why trade manually? Our new Godmode (v3.15.0) uses Breakeven-locks and autonomous scalping 24/7 to compound cashflow with zero emotional errors.',
+    badge: 'LIVE',
   },
 ];
 
