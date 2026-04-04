@@ -44,7 +44,7 @@ export const CONFIG = {
       'features': [
         '1 week free trial — try before you pay',
         'Everything in Free',
-        'Godmode Infinity v3.15.2 Engine — 24/7 autonomous trading',
+        'Godmode Infinity v3.22.0 Engine — 24/7 autonomous trading',
         'Zero-Loss Protection — auto-breakeven lock and hedging',
         'Full AI breakdown per signal — know exactly why to buy',
         'Copy the bot automatically via Mizar — zero effort trading',
