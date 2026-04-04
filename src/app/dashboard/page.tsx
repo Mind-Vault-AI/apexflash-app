@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { Zap, Wallet, Star, Bell, TrendingUp, Eye, Copy, ExternalLink, ArrowRight } from 'lucide-react';
+import { Zap, Wallet, Star, Bell, TrendingUp, Eye, Copy, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
 import { CONFIG } from '@/lib/config';
 import { useTheme } from '@/lib/useTheme';
 import PushToggle from '@/components/PushToggle';
@@ -100,6 +100,44 @@ export default function DashboardPage() {
             </div>
           </div>
         </div>
+
+        {/* Kaizen: Admin Control Panel (Conditional) */}
+        {(session.user as any).role === 'admin' && (
+          <div className="glass-card p-5 mb-6 border-apex-500/30 bg-apex-500/5">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-apex-400" /> Admin Control Panel
+              </h2>
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-apex-500 text-white uppercase tracking-wider">Godmode Active</span>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-3 rounded-xl bg-dark-800/50 border border-dark-700">
+                <p className="text-[10px] uppercase tracking-wider text-dark-500 mb-1">Global Users</p>
+                <p className="text-lg font-bold text-white">1,248</p>
+              </div>
+              <div className="p-3 rounded-xl bg-dark-800/50 border border-dark-700">
+                <p className="text-[10px] uppercase tracking-wider text-dark-500 mb-1">24h Volume</p>
+                <p className="text-lg font-bold text-green-400">842 SOL</p>
+              </div>
+              <div className="p-3 rounded-xl bg-dark-800/50 border border-dark-700">
+                <p className="text-[10px] uppercase tracking-wider text-dark-500 mb-1">Avg Win Rate</p>
+                <p className="text-lg font-bold text-apex-400">68.4%</p>
+              </div>
+              <div className="p-3 rounded-xl bg-dark-800/50 border border-dark-700">
+                <p className="text-[10px] uppercase tracking-wider text-dark-500 mb-1">Bot Status</p>
+                <p className="text-lg font-bold text-green-500 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4 flex gap-2">
+              <button className="flex-1 py-3 rounded-xl bg-dark-800 border border-dark-700 text-xs font-semibold text-white hover:bg-dark-700 transition-all">Broadcast Alert</button>
+              <button className="flex-1 py-3 rounded-xl bg-dark-800 border border-dark-700 text-xs font-semibold text-white hover:bg-dark-700 transition-all">System Logs</button>
+            </div>
+          </div>
+        )}
 
         {/* Push Notifications */}
         <div className="glass-card p-4 mb-6 flex items-center justify-between">

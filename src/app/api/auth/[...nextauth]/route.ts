@@ -82,12 +82,16 @@ const handler = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        // Kaizen: Assign admin role if user ID is in the admin list
+        const adminIds = (process.env.ADMIN_IDS || '').split(',').map(id => id.trim());
+        token.role = adminIds.includes(String(user.id)) ? 'admin' : 'user';
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as { id?: string }).id = token.id as string;
+        (session.user as any).id = token.id as string;
+        (session.user as any).role = token.role as string;
       }
       return session;
     },
