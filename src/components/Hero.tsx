@@ -47,7 +47,7 @@ export default function Hero() {
 
             {/* One-liner value prop */}
             <p className="text-sm sm:text-base text-dark-300 max-w-lg mb-3 leading-snug">
-              AI detects whale token swaps and features the new <strong className="text-white">Godmode Infinity (v3.15.0)</strong> Zero-Loss Autonomous Engine. 1-tap fast buy or let it trade 24/7 for you. <strong className="text-white">Free on Telegram.</strong>
+              AI detects whale token swaps and features the new <strong className="text-white">Godmode Infinity (v3.15.2)</strong> Zero-Loss Autonomous Engine. 1-tap fast buy or let it trade 24/7 for you. <strong className="text-white">Free on Telegram.</strong>
             </p>
 
             {/* CTA — big and clear */}
