@@ -16,7 +16,7 @@ const FEATURES = [
   {
     icon: Shield,
     title: 'Zero-Loss Engine (Godmode)',
-    description: 'Why trade manually? Our new Godmode (v3.15.0) uses Breakeven-locks and autonomous scalping 24/7 to compound cashflow with zero emotional errors.',
+    description: 'Why trade manually? Our new Godmode (v3.15.2) uses Breakeven-locks and autonomous scalping 24/7 to compound cashflow with zero emotional errors.',
     badge: 'LIVE',
   },
 ];
