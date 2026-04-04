@@ -106,6 +106,16 @@ export const EXCHANGES: Exchange[] = [
     features: ['Copy Trading', '150x Leverage', 'Low Fees', 'Futures Focus'],
     tier: 'standard',
   },
+  {
+    slug: 'bitvavo',
+    name: 'Bitvavo',
+    logo: '🇳🇱',
+    affiliateUrl: process.env.NEXT_PUBLIC_BITVAVO_AFFILIATE_URL || 'https://bitvavo.com/invite?a=6A3E846932',
+    commission: '15% fee kickback',
+    description: 'Grootste Nederlandse exchange. Veilig, eenvoudig en gereguleerd.',
+    features: ['€10.000 fee-vrij handelen', '€10 Welkomstbonus', 'iDEAL & Bancontact', 'Gereguleerd in NL'],
+    tier: 'featured',
+  },
 ];
 
 export function getExchange(slug: string): Exchange | undefined {
