@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import WhaleTracker from '@/components/WhaleTracker';
 import BotQRCard from '@/components/BotQRCard';
+import WaitlistForm from '@/components/WaitlistForm';
 
 // Lazy load below-the-fold components for faster initial load
 const LiveDemo = dynamic(() => import('@/components/LiveDemo'));
@@ -44,6 +45,7 @@ export default function Home() {
       <FreeTools />
       <Reviews />
       <Pricing />
+      <WaitlistForm />
       <FAQ />
       <Footer />
       <StickyCTA />

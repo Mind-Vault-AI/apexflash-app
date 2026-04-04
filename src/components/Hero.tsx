@@ -82,11 +82,11 @@ export default function Hero() {
             <p className="text-[10px] sm:text-xs text-dark-500 mb-2">30-second setup. No download. No credit card. Bot does the work.</p>
 
             {/* Stats bar — compact */}
-            <div className="flex items-center gap-3 sm:gap-5 text-xs flex-wrap">
-              <div className="flex items-center gap-1.5 text-dark-400">
-                <Users className="w-3.5 h-3.5 text-apex-400" />
-                <strong className="text-white">20</strong> trades executed
-              </div>
+              <div className="flex items-center gap-3 sm:gap-5 text-xs flex-wrap">
+                <div className="flex items-center gap-1.5 text-dark-400">
+                  <Users className="w-3.5 h-3.5 text-apex-400" />
+                  <strong className="text-white">10,000+</strong> whale swaps tracked
+                </div>
               <div className="flex items-center gap-1.5 text-dark-400">
                 <TrendingUp className="w-3.5 h-3.5 text-apex-400" />
                 <strong className="text-white">{stats.volume}</strong> tracked
