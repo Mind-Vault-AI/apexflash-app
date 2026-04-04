@@ -5,9 +5,9 @@ import AuthProvider from '@/components/AuthProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'ApexFlash | AI Whale Intelligence for Solana Trading',
+  title: 'ApexFlash v3.15.2 | AI Whale Intelligence & Godmode Trading',
   description:
-    'AI detects when whales buy tokens and grades every signal A-D. 1-tap buy via Jupiter. Signal quality filter, win rate tracking, copy trading. Free on Telegram.',
+    'AI detects whale token swaps and grades every signal A-D. Godmode Infinity Engine (v3.15.2) features 24/7 autonomous zero-loss trading. Free on Telegram.',
   keywords:
     'solana whale alerts, whale tracker, AI trading signals, crypto whale intelligence, telegram trading bot, jupiter swap, whale buy detection, signal grading, copy trading, win rate, solana dex bot, crypto bot, DeFi, whale wallet tracker, smart money alerts',
   metadataBase: new URL('https://apexflash.pro'),

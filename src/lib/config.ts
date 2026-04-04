@@ -7,8 +7,8 @@ export const CONFIG = {
   siteUrl: 'https://apexflash.pro',
   supportEmail: 'support@apexflash.pro',
   telegram: {
-    whaleBot: 'https://t.me/ApexFlashBot',
-    apexBot: 'https://t.me/ApexFlashBot',
+    whaleBot: 'https://t.me/apexflash_bot',
+    apexBot: 'https://t.me/apexflash_bot',
     channel: 'https://t.me/ApexFlashAlerts',
   },
   gumroad: {
@@ -44,9 +44,9 @@ export const CONFIG = {
       'features': [
         '1 week free trial — try before you pay',
         'Everything in Free',
-        'Trade as many times as you want — no daily cap',
+        'Godmode Infinity v3.15.2 Engine — 24/7 autonomous trading',
+        'Zero-Loss Protection — auto-breakeven lock and hedging',
         'Full AI breakdown per signal — know exactly why to buy',
-        'Personal P/L dashboard — see your real profit',
         'Copy the bot automatically via Mizar — zero effort trading',
         'DCA Bot builds your position automatically',
         'Track 20 wallets — follow any whale manually',
