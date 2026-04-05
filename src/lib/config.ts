@@ -57,14 +57,14 @@ export const CONFIG = {
   siteUrl: 'https://apexflash.pro',
   supportEmail: 'support@apexflash.pro',
   telegram: {
-    whaleBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_WHALE_BOT_URL, 'https://t.me/MVAi_WhalesTrader_Bot'),
-    apexBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_APEX_BOT_URL, 'https://t.me/apexflash_bot'),
+    whaleBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_WHALE_BOT_URL, 'https://t.me/apexflashbot'),
+    apexBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_APEX_BOT_URL, 'https://t.me/apexflashbot'),
     channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/apexflash_signals'),
   },
   gumroad: {
     premiumUrl: resolveGumroadUrl(
       process.env.NEXT_PUBLIC_GUMROAD_URL,
-      'https://t.me/apexflash_bot?start=elite'
+      'https://t.me/apexflashbot?start=elite'
     ),
   },
   social: {
