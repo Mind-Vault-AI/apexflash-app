@@ -27,6 +27,16 @@ function resolveGumroadUrl(candidate: string | undefined, fallback: string): str
     return fallback;
   }
 
+  const normalized = candidate.trim().toLowerCase();
+  const blocked = [
+    'https://apexflash.gumroad.com/l/premium',
+    'https://apexflash.gumroad.com/l/elite',
+  ];
+
+  if (blocked.includes(normalized)) {
+    return fallback;
+  }
+
   try {
     const url = new URL(candidate);
     const host = url.hostname.toLowerCase();
