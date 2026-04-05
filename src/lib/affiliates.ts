@@ -15,70 +15,116 @@ export interface Exchange {
   tier: 'featured' | 'standard';
 }
 
-// <KAIZEN_AFFILIATES_START>
+function resolveAffiliateUrl(
+  candidate: string | undefined,
+  fallback: string,
+  allowedHosts: string[]
+): string {
+  if (!candidate) {
+    return fallback;
+  }
+
+  try {
+    const url = new URL(candidate);
+    const host = url.hostname.toLowerCase();
+    const isAllowedHost = allowedHosts.some((allowed) => host === allowed || host.endsWith(`.${allowed}`));
+
+    if (url.protocol === 'https:' && isAllowedHost) {
+      return candidate;
+    }
+  } catch {
+    // fall back to trusted static URL
+  }
+
+  return fallback;
+}
+
 export const EXCHANGES: Exchange[] = [
-  {
-    slug: 'gmgn',
-    name: 'GMGN.ai',
-    logo: '\ud83e\udde0',
-    affiliateUrl: process.env.NEXT_PUBLIC_GMGN_AFFILIATE_URL || 'https://gmgn.ai/?ref=cBB5zbUF',
-    commission: '10% trading fee rebate',
-    description: 'AI-powered Solana trading terminal with wallet tracking, copy trading, and sniper tools.',
-    features: ['Copy Trading', 'Wallet Tracker', 'Sniper Bot', 'Smart Money Analysis'],
-    tier: 'featured',
-  },
   {
     slug: 'bitunix',
     name: 'Bitunix',
-    logo: '\u26a1',
-    affiliateUrl: process.env.NEXT_PUBLIC_BITUNIX_AFFILIATE_URL || 'https://www.bitunix.com/register?vipCode=xc6jzk',
+    logo: '⚡',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BITUNIX_AFFILIATE_URL,
+      'https://www.bitunix.com/register?vipCode=ApexFlash',
+      ['bitunix.com']
+    ),
     commission: 'Up to 50% fee rebate',
     description: 'Next-gen derivatives exchange with deep liquidity and up to 125x leverage.',
     features: ['125x Leverage', 'Copy Trading', 'Low Fees', 'Futures & Spot'],
     tier: 'featured',
   },
   {
-    slug: 'bitvavo',
-    name: 'Bitvavo',
-    logo: '\ud83c\uddf3\ud83c\uddf1',
-    affiliateUrl: process.env.NEXT_PUBLIC_BITVAVO_AFFILIATE_URL || 'https://bitvavo.com/invite?a=6A3E846932',
-    commission: '15% fee kickback',
-    description: 'Grootste Nederlandse exchange. Veilig, eenvoudig en gereguleerd.',
-    features: ['\u20ac10.000 fee-vrij handelen', '\u20ac10 Welkomstbonus', 'iDEAL & Bancontact', 'Gereguleerd in NL'],
-    tier: 'featured',
+    slug: 'binance',
+    name: 'Binance',
+    logo: '🟡',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BINANCE_AFFILIATE_URL,
+      'https://accounts.binance.com/register?ref=APEXFLASH',
+      ['binance.com']
+    ),
+    commission: '20% fee kickback',
+    description: 'World\'s largest crypto exchange by volume. Full ecosystem.',
+    features: ['Spot & Futures', 'Earn Products', 'Launchpad', 'P2P Trading'],
+    tier: 'standard',
   },
   {
-    slug: 'mexc',
-    name: 'MEXC',
-    logo: '\ud83d\udd37',
-    affiliateUrl: process.env.NEXT_PUBLIC_MEXC_AFFILIATE_URL || 'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
-    commission: 'Up to 70% commission \u2014 best in market',
-    description: 'Zero-fee spot trading with massive token selection and fast listings.',
-    features: ['Zero Spot Fees', '2300+ Coins', 'Futures Trading', 'MX Token Airdrops'],
-    tier: 'featured',
+    slug: 'bybit',
+    name: 'Bybit',
+    logo: '🔶',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BYBIT_AFFILIATE_URL,
+      'https://www.bybit.com/register?affiliate_id=APEXFLASH',
+      ['bybit.com']
+    ),
+    commission: 'Up to 30% commission',
+    description: 'Top derivatives platform with advanced trading tools.',
+    features: ['Copy Trading', 'Bot Trading', 'Options', 'Web3 Wallet'],
+    tier: 'standard',
   },
   {
-    slug: 'blofin',
-    name: 'BloFin',
-    logo: '\ud83d\udc0b',
-    affiliateUrl: process.env.NEXT_PUBLIC_BLOFIN_AFFILIATE_URL || 'https://www.blofin.com/register?referral_code=b996a0111c1b4497b53d9b3cc82e4539',
-    commission: 'Up to 50% commission',
-    description: 'Whale-grade derivatives exchange with deep liquidity and copy trading.',
-    features: ['Copy Trading', '150x Leverage', 'Low Fees', 'Futures Focus'],
+    slug: 'okx',
+    name: 'OKX',
+    logo: '⬛',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_OKX_AFFILIATE_URL,
+      'https://www.okx.com/join/APEXFLASH',
+      ['okx.com']
+    ),
+    commission: 'Up to 30% rebate',
+    description: 'All-in-one crypto platform with DeFi wallet and DEX.',
+    features: ['Spot & Derivatives', 'DeFi Hub', 'NFT Market', 'Earn'],
+    tier: 'standard',
+  },
+  {
+    slug: 'kucoin',
+    name: 'KuCoin',
+    logo: '🟢',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_KUCOIN_AFFILIATE_URL,
+      'https://www.kucoin.com/r/APEXFLASH',
+      ['kucoin.com']
+    ),
+    commission: 'Up to 20% commission',
+    description: 'The People\'s Exchange - huge altcoin selection.',
+    features: ['700+ Coins', 'Trading Bots', 'Margin', 'Lending'],
     tier: 'standard',
   },
   {
     slug: 'gate',
     name: 'Gate.io',
-    logo: '\ud83d\udd35',
-    affiliateUrl: process.env.NEXT_PUBLIC_GATE_AFFILIATE_URL || 'https://www.gate.io/signup/VFFHXVFDUG',
-    commission: '30% fee rebate',
+    logo: '🔵',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_GATE_AFFILIATE_URL,
+      'https://www.gate.io/signup?ref=APEXFLASH',
+      ['gate.io']
+    ),
+    commission: 'Up to 40% commission',
     description: 'Early access to new tokens with extensive listings.',
     features: ['1400+ Coins', 'Startup IEO', 'Copy Trading', 'NFTs'],
     tier: 'standard',
   },
 ];
-// <KAIZEN_AFFILIATES_END>
 
 export function getExchange(slug: string): Exchange | undefined {
   return EXCHANGES.find((e) => e.slug === slug);

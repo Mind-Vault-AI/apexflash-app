@@ -1,11 +1,14 @@
+'use client';
+
 import { CONFIG } from '@/lib/config';
+import { trackEvent } from '@/lib/tracking';
 import { Zap } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-dark-800/50 py-8 pb-20 md:pb-8">
+    <footer className="border-t border-dark-800/50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-6 mb-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-3">
@@ -15,7 +18,7 @@ export default function Footer() {
               <span className="text-lg font-bold gradient-text">ApexFlash</span>
             </div>
             <p className="text-dark-400 text-sm leading-relaxed max-w-sm">
-              AI-powered crypto trading intelligence. Built by Erik Uijttenboogaart.
+              AI-powered crypto trading intelligence. Built by traders, for traders.
               A MindVault-AI project.
             </p>
           </div>
@@ -24,13 +27,18 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-3">Product</h4>
             <ul className="space-y-2 text-sm text-dark-400">
-              <li><a href="#features" className="hover:text-apex-400 transition-colors">Features</a></li>
-              <li><a href="#pricing" className="hover:text-apex-400 transition-colors">Pricing</a></li>
-              <li><a href="#exchanges" className="hover:text-apex-400 transition-colors">Exchanges</a></li>
-              <li><a href="/about" className="hover:text-apex-400 transition-colors">About</a></li>
+              <li><a href="#features" onClick={() => trackEvent('footer_click', { label: 'Features', href: '#features' })} className="hover:text-apex-400 transition-colors">Features</a></li>
+              <li><a href="#pricing" onClick={() => trackEvent('footer_click', { label: 'Pricing', href: '#pricing' })} className="hover:text-apex-400 transition-colors">Pricing</a></li>
+              <li><a href="#exchanges" onClick={() => trackEvent('footer_click', { label: 'Exchanges', href: '#exchanges' })} className="hover:text-apex-400 transition-colors">Exchanges</a></li>
               <li>
-                <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  ApexFlash Bot
+                <a
+                  href={CONFIG.telegram.whaleBot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('footer_click', { label: 'Whale Bot', href: CONFIG.telegram.whaleBot })}
+                  className="hover:text-apex-400 transition-colors"
+                >
+                  Whale Bot
                 </a>
               </li>
             </ul>
@@ -40,28 +48,14 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-3">Connect</h4>
             <ul className="space-y-2 text-sm text-dark-400">
               <li>
-                <a href={CONFIG.telegram.apexBot} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Telegram Bot
-                </a>
-              </li>
-              <li>
-                <a href={CONFIG.telegram.channel} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Whale Alerts Channel
-                </a>
-              </li>
-              <li>
-                <a href={CONFIG.social.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Twitter / X
-                </a>
-              </li>
-              <li>
-                <a href={CONFIG.social.discord} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  Discord
-                </a>
-              </li>
-              <li>
-                <a href={CONFIG.social.tiktok} target="_blank" rel="noopener noreferrer" className="hover:text-apex-400 transition-colors">
-                  TikTok
+                <a
+                  href={CONFIG.telegram.whaleBot}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('footer_click', { label: 'Telegram', href: CONFIG.telegram.whaleBot })}
+                  className="hover:text-apex-400 transition-colors"
+                >
+                  Telegram
                 </a>
               </li>
               <li>
@@ -70,18 +64,12 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-            <h4 className="text-sm font-semibold text-white mb-3 mt-6">Legal</h4>
-            <ul className="space-y-2 text-sm text-dark-400">
-              <li><a href="/terms" className="hover:text-apex-400 transition-colors">Terms of Service</a></li>
-              <li><a href="/privacy" className="hover:text-apex-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="/disclaimer" className="hover:text-apex-400 transition-colors">Risk Disclosure</a></li>
-            </ul>
           </div>
         </div>
 
         <div className="border-t border-dark-800/50 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-dark-500 text-xs">
-            &copy; {new Date().getFullYear()} ApexFlash by Erik Uijttenboogaart / MindVault-AI. All rights reserved.
+            &copy; {new Date().getFullYear()} ApexFlash by MindVault-AI. All rights reserved.
           </p>
           <p className="text-dark-600 text-xs">
             Trading crypto involves risk. Past performance does not guarantee future results. Not financial advice.

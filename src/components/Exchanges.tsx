@@ -1,15 +1,23 @@
 'use client';
 
 import { EXCHANGES, type Exchange } from '@/lib/affiliates';
+import { trackEvent } from '@/lib/tracking';
 import { ArrowUpRight, Star } from 'lucide-react';
 
 function ExchangeCard({ exchange }: { exchange: Exchange }) {
+  const handleClick = () => {
+    // Track affiliate click (server-side tracking)
+    fetch(`/api/affiliate/${exchange.slug}`, { method: 'POST' }).catch(() => {});
+    trackEvent('exchange_click', { slug: exchange.slug, name: exchange.name, tier: exchange.tier });
+  };
+
   return (
     <a
       href={exchange.affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`glass-card p-4 sm:p-6 hover:border-apex-500/30 transition-all duration-300 group block ${
+      onClick={handleClick}
+      className={`glass-card p-6 hover:border-apex-500/30 transition-all duration-300 group block ${
         exchange.tier === 'featured' ? 'glow-border md:col-span-2 lg:col-span-1' : ''
       }`}
     >
@@ -46,26 +54,26 @@ function ExchangeCard({ exchange }: { exchange: Exchange }) {
 
 export default function Exchanges() {
   return (
-    <section id="exchanges" className="py-10 sm:py-16 relative">
+    <section id="exchanges" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900/50 to-dark-950" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-10">
-          <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3">
-            Trade Smarter on <span className="gradient-text">Top Exchanges</span>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Trade on <span className="gradient-text">Top Exchanges</span>
           </h2>
-          <p className="text-dark-400 max-w-xl mx-auto">
-            Exclusive fee discounts — save hundreds per month. Only through ApexFlash.
+          <p className="text-dark-400 max-w-2xl mx-auto text-lg">
+            Sign up through ApexFlash and get exclusive fee discounts on the best crypto exchanges.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {EXCHANGES.map((exchange) => (
             <ExchangeCard key={exchange.slug} exchange={exchange} />
           ))}
         </div>
 
-        <p className="text-center text-dark-600 text-xs mt-6">
-          ApexFlash earns referral commissions — this funds free whale alerts and tools for the community.
+        <p className="text-center text-dark-500 text-sm mt-8">
+          ApexFlash may receive referral commissions from partner exchanges. This helps fund free tools for the community.
         </p>
       </div>
     </section>

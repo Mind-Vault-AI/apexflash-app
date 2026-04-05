@@ -1,171 +1,70 @@
 'use client';
+'use client';
 
-import { useState, useEffect } from 'react';
 import { CONFIG } from '@/lib/config';
-import { ArrowRight, Zap, Users, TrendingUp, Trophy, Shield, Eye, BarChart3 } from 'lucide-react';
+import { trackEvent } from '@/lib/tracking';
+import { ArrowRight, TrendingUp, Shield, Zap } from 'lucide-react';
 
 export default function Hero() {
-  const [stats, setStats] = useState({ users: 3, volume: '$39K+', winRate: 50, tradesToday: 0 });
-
-  useEffect(() => {
-    fetch('/api/stats')
-      .then(r => r.ok ? r.json() : null)
-      .then(data => { if (data) setStats(s => ({ ...s, ...data })); })
-      .catch(() => {});
-
-    const statsInterval = setInterval(() => {
-      fetch('/api/stats')
-        .then(r => r.ok ? r.json() : null)
-        .then(data => { if (data) setStats(s => ({ ...s, ...data })); })
-        .catch(() => {});
-    }, 60000);
-
-    return () => { clearInterval(statsInterval); };
-  }, []);
-
   return (
-    <section className="relative pt-16 pb-2 sm:pt-24 sm:pb-4 overflow-hidden">
-      {/* Background */}
+    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-apex-900/20 via-dark-950 to-dark-950" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-apex-500/5 rounded-full blur-[100px]" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-apex-500/5 rounded-full blur-[120px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-6 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-sm font-medium mb-8">
+            <span className="w-2 h-2 rounded-full bg-apex-400 animate-pulse" />
+            Live whale tracking active
+          </div>
 
-          {/* LEFT: Above the fold — EVERYTHING that matters */}
-          <div>
-            {/* Live badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-xs font-medium mb-2">
-              <span className="w-2 h-2 rounded-full bg-apex-400 animate-pulse" />
-              Live whale tracking — Solana + Ethereum
-            </div>
+          {/* Heading */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+            Trade Crypto with{' '}
+            <span className="gradient-text">Unfair Advantage</span>
+          </h1>
 
-            {/* Heading — compact */}
-            <h1 className="text-[1.6rem] sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight mb-2 leading-[1.1] gradient-hero">
-              Whale Spotted <span className="emoji-reset">🐋</span> Bot Executes <span className="emoji-reset">⚡</span><br className="sm:hidden" /> You Profit
-            </h1>
+          <p className="text-lg sm:text-xl text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Real-time whale alerts, AI-powered signals, and smart trading tools.
+            See what the big players do <strong className="text-dark-100">before</strong> the market moves.
+          </p>
 
-            {/* One-liner value prop */}
-            <p className="text-sm sm:text-base text-dark-300 max-w-lg mb-3 leading-snug">
-              AI detects whale token swaps and features the new <strong className="text-white">Godmode Infinity (v3.15.2)</strong> Zero-Loss Autonomous Engine. 1-tap fast buy or let it trade 24/7 for you. <strong className="text-white">Free on Telegram.</strong>
-            </p>
-
-            {/* CTA — big and clear */}
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <a
-              href={CONFIG.telegram.apexBot}
+              href={CONFIG.telegram.whaleBot}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-base sm:text-lg inline-flex !py-3 !px-6 sm:!py-3.5 sm:!px-7 mb-3"
+              onClick={() => trackEvent('cta_click', { section: 'hero', cta: 'start_free_whale_alerts', target: 'telegram_whale_bot' })}
+              className="btn-primary text-lg"
             >
               <Zap className="w-5 h-5" />
-              Let the Bot Trade For You — Free
+              Start Free Whale Alerts
               <ArrowRight className="w-5 h-5" />
             </a>
-
-            {/* 3 Trust bullets — MUST be above fold */}
-            <div className="grid grid-cols-3 gap-2 mb-3">
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
-                <Shield className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                <span>Auto Stop-Loss</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
-                <Eye className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                <span>1-Tap Execution</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-dark-300">
-                <BarChart3 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                <span>{stats.winRate}% Win Rate</span>
-              </div>
-            </div>
-
-            {/* Micro trust line */}
-            <p className="text-[10px] sm:text-xs text-dark-500 mb-2">30-second setup. No download. No credit card. Bot does the work.</p>
-
-            {/* Stats bar — compact */}
-              <div className="flex items-center gap-3 sm:gap-5 text-xs flex-wrap">
-                <div className="flex items-center gap-1.5 text-dark-400">
-                  <Users className="w-3.5 h-3.5 text-apex-400" />
-                  <strong className="text-white">10,000+</strong> whale swaps tracked
-                </div>
-              <div className="flex items-center gap-1.5 text-dark-400">
-                <TrendingUp className="w-3.5 h-3.5 text-apex-400" />
-                <strong className="text-white">{stats.volume}</strong> tracked
-              </div>
-              {stats.winRate > 0 && (
-                <div className="flex items-center gap-1.5 text-dark-400">
-                  <Trophy className="w-3.5 h-3.5 text-green-400" />
-                  <strong className="text-green-400">{stats.winRate}%</strong> win rate
-                </div>
-              )}
-            </div>
+            <a
+              href="#exchanges"
+              onClick={() => trackEvent('cta_click', { section: 'hero', cta: 'view_partner_exchanges', target: 'exchanges_section' })}
+              className="btn-secondary text-lg"
+            >
+              View Partner Exchanges
+            </a>
           </div>
 
-          {/* RIGHT: Live whale feed — desktop only */}
-          <div className="hidden lg:block">
-            <div className="glass-card p-5 max-w-md ml-auto">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-apex-400 animate-pulse" />
-                  <span className="text-sm font-semibold text-white">Live Whale Feed</span>
-                </div>
-                <span className="text-xs text-dark-500">Just now</span>
-              </div>
-
-              <div className="space-y-2">
-                {[
-                  { text: 'Whale bought 2.1M BONK via Jupiter', grade: 'A', emoji: '🚨' },
-                  { text: 'Smart money accumulated 85,000 SOL', grade: 'A', emoji: '🐋' },
-                  { text: 'DEX whale: $1.2M JUP swap detected', grade: 'B', emoji: '🔥' },
-                  { text: 'OKX withdrawal: 5,000 ETH to cold', grade: 'B', emoji: '🟢' },
-                  { text: 'Binance hot wallet: $50M outflow', grade: 'C', emoji: '⚪' },
-                ].map((whale, i) => {
-                  const gradeColor = whale.grade === 'A' ? 'text-green-400 bg-green-500/20' :
-                    whale.grade === 'B' ? 'text-cyan-400 bg-cyan-500/20' : 'text-yellow-400 bg-yellow-500/20';
-                  return (
-                    <a
-                      key={i}
-                      href={CONFIG.telegram.apexBot}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-3 p-2 rounded-lg text-sm cursor-pointer transition-all hover:scale-[1.01] ${
-                        i === 0 ? 'bg-apex-500/10 border border-apex-500/20 text-apex-300' : 'bg-dark-800/50 text-dark-400 hover:bg-dark-700/50'
-                      }`}
-                    >
-                      <span className="text-sm shrink-0">{whale.emoji}</span>
-                      <span className={`flex-1 text-xs ${i === 0 ? 'font-medium' : ''}`}>{whale.text}</span>
-                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${gradeColor}`}>{whale.grade}</span>
-                    </a>
-                  );
-                })}
-              </div>
-
-              <a
-                href={CONFIG.telegram.apexBot}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 w-full btn-primary !py-2 text-sm text-center"
-              >
-                Let the Bot Trade These For You
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Exchange trust bar — compact */}
-        <div className="mt-2 pt-2 sm:mt-4 sm:pt-3 border-t border-dark-800/30">
-          <div className="flex items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-xs font-medium">
-            <span className="text-dark-600 hidden sm:inline">Tracking whales on</span>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto">
             {[
-              { name: 'Bitunix', url: 'https://www.bitunix.com/register?vipCode=xc6jzk' },
-              { name: 'Gate.io', url: 'https://www.gate.io/signup/VFFHXVFDUG' },
-              { name: 'OKX', url: 'https://www.okx.com/join/APEXFLASH' },
-              { name: 'MEXC', url: 'https://www.mexc.com/register?inviteCode=BPM0e8Rm' },
-              { name: 'BloFin', url: 'https://www.blofin.com/register?referral=b996a0111c1b4497b53d9b3cc82e4539' },
-              { name: 'Binance', url: 'https://accounts.binance.com/register' },
-            ].map((ex) => (
-              <a key={ex.name} href={ex.url} target="_blank" rel="noopener noreferrer" className="text-dark-500 hover:text-apex-400 transition-colors">
-                {ex.name}
-              </a>
+              { icon: TrendingUp, value: '10+', label: 'Whale Wallets Tracked' },
+              { icon: Shield, value: '5', label: 'Chains Monitored' },
+              { icon: Zap, value: '24/7', label: 'Real-time Alerts' },
+            ].map(({ icon: Icon, value, label }) => (
+              <div key={label} className="text-center">
+                <Icon className="w-5 h-5 text-apex-400 mx-auto mb-2" />
+                <div className="text-2xl font-bold text-white">{value}</div>
+                <div className="text-xs text-dark-400">{label}</div>
+              </div>
             ))}
           </div>
         </div>
