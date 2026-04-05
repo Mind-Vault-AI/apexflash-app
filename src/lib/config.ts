@@ -22,6 +22,26 @@ function resolveTelegramUrl(candidate: string | undefined, fallback: string): st
   return fallback;
 }
 
+function resolveGumroadUrl(candidate: string | undefined, fallback: string): string {
+  if (!candidate) {
+    return fallback;
+  }
+
+  try {
+    const url = new URL(candidate);
+    const host = url.hostname.toLowerCase();
+    const isAllowed = host === 'gumroad.com' || host.endsWith('.gumroad.com');
+
+    if (url.protocol === 'https:' && isAllowed) {
+      return candidate;
+    }
+  } catch {
+    // fall back to trusted static URL
+  }
+
+  return fallback;
+}
+
 export const CONFIG = {
   siteName: 'ApexFlash',
   siteUrl: 'https://apexflash.pro',
@@ -32,7 +52,10 @@ export const CONFIG = {
     channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/apexflash_signals'),
   },
   gumroad: {
-    premiumUrl: process.env.NEXT_PUBLIC_GUMROAD_URL || 'https://apexflash.gumroad.com/l/premium',
+    premiumUrl: resolveGumroadUrl(
+      process.env.NEXT_PUBLIC_GUMROAD_URL,
+      'https://t.me/apexflash_bot?start=elite'
+    ),
   },
   social: {
     twitter: 'https://x.com/apexflashpro',
