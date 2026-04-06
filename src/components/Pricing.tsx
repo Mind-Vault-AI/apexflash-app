@@ -23,7 +23,7 @@ const PLANS = [
     ...CONFIG.pricing.elite,
     icon: Crown,
     cta: 'Go Elite',
-    href: CONFIG.gumroad.premiumUrl,
+    href: CONFIG.gumroad.eliteUrl,
     popular: false,
   },
 ];

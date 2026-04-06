@@ -46,7 +46,7 @@ export const EXCHANGES: Exchange[] = [
     logo: '⚡',
     affiliateUrl: resolveAffiliateUrl(
       process.env.NEXT_PUBLIC_BITUNIX_AFFILIATE_URL,
-      'https://www.bitunix.com/register?vipCode=ApexFlash',
+      'https://www.bitunix.com/register?vipCode=xc6jzk',
       ['bitunix.com']
     ),
     commission: 'Up to 50% fee rebate',
@@ -116,7 +116,7 @@ export const EXCHANGES: Exchange[] = [
     logo: '🔵',
     affiliateUrl: resolveAffiliateUrl(
       process.env.NEXT_PUBLIC_GATE_AFFILIATE_URL,
-      'https://www.gate.io/signup?ref=APEXFLASH',
+      'https://www.gate.io/signup?ref=VFFHXVFDUG',
       ['gate.io']
     ),
     commission: 'Up to 40% commission',

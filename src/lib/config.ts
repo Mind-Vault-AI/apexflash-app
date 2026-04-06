@@ -63,8 +63,12 @@ export const CONFIG = {
   },
   gumroad: {
     premiumUrl: resolveGumroadUrl(
-      process.env.NEXT_PUBLIC_GUMROAD_URL,
-      'https://t.me/apexflashbot?start=elite'
+      process.env.NEXT_PUBLIC_GUMROAD_PRO_URL,
+      'https://mindvault34.gumroad.com/l/rwauqu'
+    ),
+    eliteUrl: resolveGumroadUrl(
+      process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL,
+      'https://mindvault34.gumroad.com/l/unetcl'
     ),
   },
   social: {
