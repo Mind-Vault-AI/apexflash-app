@@ -1,6 +1,6 @@
 {
   "name": "apexflash-app",
-  "version": "3.22.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,14 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
-    "lightweight-charts": "^5.1.0",
-    "lucide-react": "^0.468.0",
-    "next": "^16.1.6",
-    "next-auth": "^4.24.13",
+    "next": "14.2.21",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "lucide-react": "^0.468.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.12",
