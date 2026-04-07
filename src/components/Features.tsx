@@ -17,10 +17,17 @@ const FEATURES = [
   },
   {
     icon: Bot,
+    title: 'Copy Trading',
+    description:
+      'Follow top-performing traders on Mizar. Automatically mirror their trades with customizable risk settings and position sizing.',
+    badge: 'Live',
+  },
+  {
+    icon: Bot,
     title: 'Smart DCA Bot',
     description:
       'Automated Dollar-Cost Averaging with intelligent timing. Buy the dips automatically based on whale activity and sentiment.',
-    badge: 'Coming Soon',
+    badge: 'Live',
   },
   {
     icon: BarChart3,
