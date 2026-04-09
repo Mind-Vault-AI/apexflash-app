@@ -145,12 +145,13 @@ async function getSubscriberCount(): Promise<number> {
 // ── Bot KPIs from Redis (optional) ─────────────────────────────────────────
 
 async function getBotKpis() {
+  const todayKey = `winrate:total:${new Date().toISOString().split('T')[0]}`;
   const [totalUsers, totalTrades, wins, totalPnlSol, tradesToday] = await Promise.all([
     redis('GET', 'platform:total_users'),
     redis('GET', 'winrate:total_trades'),
     redis('GET', 'winrate:wins'),
     redis('GET', 'winrate:total_pnl_sol'),
-    redis('GET', 'platform:trades_today'),
+    redis('GET', todayKey),
   ]);
 
   const tradesAll = safeInt(totalTrades);
