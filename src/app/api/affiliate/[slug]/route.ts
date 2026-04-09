@@ -35,9 +35,9 @@ async function recordClick(click: ClickRecord) {
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = params;
+  const { slug } = await params;
   const exchange = getExchange(slug);
 
   if (!exchange) {
