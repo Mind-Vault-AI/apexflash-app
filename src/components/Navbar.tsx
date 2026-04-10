@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Exchanges', href: '#exchanges' },
   { label: 'Pricing', href: '#pricing' },
+  { label: 'About', href: '/about' },
   { label: 'Whale Bot', href: CONFIG.telegram.whaleBot, external: true },
 ];
 

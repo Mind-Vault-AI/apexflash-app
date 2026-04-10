@@ -55,7 +55,7 @@ function resolveGumroadUrl(candidate: string | undefined, fallback: string): str
 export const CONFIG = {
   siteName: 'ApexFlash',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://apexflash.pro',
-  supportEmail: 'info@mindvault-ai.com',
+  supportEmail: 'support@apexflash.pro',
   telegram: {
     // NEXT_PUBLIC_TELEGRAM_BOT — set in Render env (matches Box .env.apexflash-app)
     bot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_BOT, 'https://t.me/ApexFlashBot'),
