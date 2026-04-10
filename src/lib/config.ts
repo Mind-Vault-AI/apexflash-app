@@ -54,61 +54,65 @@ function resolveGumroadUrl(candidate: string | undefined, fallback: string): str
 
 export const CONFIG = {
   siteName: 'ApexFlash',
-  siteUrl: 'https://apexflash.pro',
-  supportEmail: 'support@apexflash.pro',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://apexflash.pro',
+  supportEmail: 'info@mindvault-ai.com',
   telegram: {
-    whaleBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_WHALE_BOT_URL, 'https://t.me/apexflashbot'),
-    apexBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_APEX_BOT_URL, 'https://t.me/apexflashbot'),
-    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/apexflash_signals'),
+    // NEXT_PUBLIC_TELEGRAM_BOT — set in Render env (matches Box .env.apexflash-app)
+    bot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_BOT, 'https://t.me/ApexFlashBot'),
+    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL, 'https://t.me/ApexFlashAlerts'),
+    support: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_SUPPORT, 'https://t.me/ApexFlashSupport'),
+    // Aliases used in components
+    get whaleBot() { return this.bot; },
+    get apexBot() { return this.bot; },
   },
   gumroad: {
     premiumUrl: resolveGumroadUrl(
-      process.env.NEXT_PUBLIC_GUMROAD_PRO_URL,
+      process.env.NEXT_PUBLIC_GUMROAD_PRO,
       'https://mindvault34.gumroad.com/l/rwauqu'
     ),
     eliteUrl: resolveGumroadUrl(
-      process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL,
+      process.env.NEXT_PUBLIC_GUMROAD_ELITE,
       'https://mindvault34.gumroad.com/l/unetcl'
     ),
   },
   social: {
-    twitter: 'https://x.com/apexflashpro',
+    twitter: 'https://x.com/MindVault_ai',
   },
   pricing: {
     free: {
       name: 'Explorer',
       price: 0,
       features: [
-        'Basic whale alerts (3/day)',
+        'Whale alerts (3/day)',
         'Daily market summary',
-        'Community Telegram access',
-        'Exchange affiliate perks',
+        'Telegram community access',
+        'Exchange fee discounts',
       ],
     },
     pro: {
       name: 'Flash Pro',
-      price: 19,
+      price: 9.99,
       period: 'month',
       features: [
         'Unlimited real-time whale alerts',
-        'Multi-chain tracking (ETH, BSC, SOL, ARB)',
-        'Custom alert thresholds',
-        'AI sentiment signals',
-        'DCA bot access (coming soon)',
+        'Multi-chain: ETH, BSC, SOL, BASE',
+        'AI trading advisor',
+        'Grade A signals',
+        'Zero-Loss Manager',
         'Priority support',
       ],
     },
     elite: {
       name: 'Flash Elite',
-      price: 49,
+      price: 29.99,
       period: 'month',
       features: [
         'Everything in Pro',
         'Private signals channel',
-        'Arbitrage alerts',
-        'Portfolio risk analysis',
-        'Strategy backtesting (coming soon)',
-        '1-on-1 onboarding call',
+        'Arbitrage scanner',
+        'Copy trading via MIZAR',
+        'GMGN AI trading (auto-swap)',
+        '1-on-1 onboarding',
       ],
     },
   },

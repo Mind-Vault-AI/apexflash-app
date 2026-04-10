@@ -39,13 +39,14 @@ function resolveAffiliateUrl(
   return fallback;
 }
 
+// All env var names match Box Drive: C:\Users\erik_\Box\08_OPERATIONS\8.1_ApexFlash_Bot\.env.apexflash-app
 export const EXCHANGES: Exchange[] = [
   {
     slug: 'bitunix',
     name: 'Bitunix',
     logo: '⚡',
     affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_BITUNIX_AFFILIATE_URL,
+      process.env.NEXT_PUBLIC_BITUNIX_URL,
       'https://www.bitunix.com/register?vipCode=xc6jzk',
       ['bitunix.com']
     ),
@@ -55,73 +56,69 @@ export const EXCHANGES: Exchange[] = [
     tier: 'featured',
   },
   {
-    slug: 'binance',
-    name: 'Binance',
-    logo: '🟡',
+    slug: 'blofin',
+    name: 'Blofin',
+    logo: '🟠',
     affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_BINANCE_AFFILIATE_URL,
-      'https://accounts.binance.com/register?ref=APEXFLASH',
-      ['binance.com']
+      process.env.NEXT_PUBLIC_BLOFIN_URL,
+      'https://blofin.com/register?referral_code=b996a0111c1b4497b53d9b3cc82e4539',
+      ['blofin.com']
     ),
-    commission: '20% fee kickback',
-    description: 'World\'s largest crypto exchange by volume. Full ecosystem.',
-    features: ['Spot & Futures', 'Earn Products', 'Launchpad', 'P2P Trading'],
-    tier: 'standard',
+    commission: 'Up to 40% fee rebate',
+    description: 'Professional derivatives exchange — built for serious traders.',
+    features: ['Copy Trading', 'USDT Perps', 'Low Fees', 'Up to 100x'],
+    tier: 'featured',
   },
   {
-    slug: 'bybit',
-    name: 'Bybit',
-    logo: '🔶',
+    slug: 'mexc',
+    name: 'MEXC',
+    logo: '🔷',
     affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_BYBIT_AFFILIATE_URL,
-      'https://www.bybit.com/register?affiliate_id=APEXFLASH',
-      ['bybit.com']
+      process.env.NEXT_PUBLIC_MEXC_URL,
+      'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
+      ['mexc.com']
     ),
-    commission: 'Up to 30% commission',
-    description: 'Top derivatives platform with advanced trading tools.',
-    features: ['Copy Trading', 'Bot Trading', 'Options', 'Web3 Wallet'],
-    tier: 'standard',
-  },
-  {
-    slug: 'okx',
-    name: 'OKX',
-    logo: '⬛',
-    affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_OKX_AFFILIATE_URL,
-      'https://www.okx.com/join/APEXFLASH',
-      ['okx.com']
-    ),
-    commission: 'Up to 30% rebate',
-    description: 'All-in-one crypto platform with DeFi wallet and DEX.',
-    features: ['Spot & Derivatives', 'DeFi Hub', 'NFT Market', 'Earn'],
-    tier: 'standard',
-  },
-  {
-    slug: 'kucoin',
-    name: 'KuCoin',
-    logo: '🟢',
-    affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_KUCOIN_AFFILIATE_URL,
-      'https://www.kucoin.com/r/APEXFLASH',
-      ['kucoin.com']
-    ),
-    commission: 'Up to 20% commission',
-    description: 'The People\'s Exchange - huge altcoin selection.',
-    features: ['700+ Coins', 'Trading Bots', 'Margin', 'Lending'],
+    commission: '0% Maker Fees',
+    description: 'Huge altcoin selection with zero maker fees on spot trading.',
+    features: ['0% Maker Fee', '1500+ Tokens', 'Futures', 'Earn'],
     tier: 'standard',
   },
   {
     slug: 'gate',
-    name: 'Gate.io',
+    name: 'Gate.com',
     logo: '🔵',
     affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_GATE_AFFILIATE_URL,
-      'https://www.gate.io/signup?ref=VFFHXVFDUG',
-      ['gate.io']
+      process.env.NEXT_PUBLIC_GATE_URL,
+      'https://www.gate.com/signup/VFFHXVFDUG?ref_type=103',
+      ['gate.com', 'gate.io']
     ),
     commission: 'Up to 40% commission',
-    description: 'Early access to new tokens with extensive listings.',
-    features: ['1400+ Coins', 'Startup IEO', 'Copy Trading', 'NFTs'],
+    description: 'Early access to new tokens with 1400+ listings.',
+    features: ['1400+ Coins', 'IEO Launchpad', 'Copy Trading', 'Earn'],
+    tier: 'standard',
+  },
+  {
+    slug: 'bitvavo',
+    name: 'Bitvavo',
+    logo: '🇳🇱',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BITVAVO_URL,
+      'https://bitvavo.com/?a=6A3E846932',
+      ['bitvavo.com']
+    ),
+    commission: '€0 trading fees (first €1000)',
+    description: 'European exchange — ideal for EUR traders. Lowest fees in NL/EU.',
+    features: ['EUR Direct', 'iDEAL', 'Low 0.25% fee', 'SEPA Free'],
+    tier: 'standard',
+  },
+  {
+    slug: 'binance',
+    name: 'Binance',
+    logo: '🟡',
+    affiliateUrl: 'https://accounts.binance.com/register',
+    commission: 'World\'s #1 by volume',
+    description: 'World\'s largest crypto exchange. Full ecosystem.',
+    features: ['Spot & Futures', 'Earn Products', 'Launchpad', 'P2P Trading'],
     tier: 'standard',
   },
 ];
