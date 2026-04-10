@@ -1,22 +1,27 @@
 # ApexFlash App — CURRENT STATUS
-# Last updated: 2026-04-10 (Sessie 24)
+# Last updated: 2026-04-11 (Sessie 26)
 
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.1
+- Version: v3.22.2
 
-## WAT WERKT
-- ✅ Landing page live
-- ✅ Affiliate tracking (/api/affiliate/[slug])
-- ✅ Email subscribe (/api/subscribe)
-- ✅ /api/stats → live Redis data (HERSTELD sessie 24)
-- ✅ robots.txt (HERSTELD sessie 24)
+## WAT WERKT (v3.22.2)
+- ✅ Landing page live — oranje branding (#f97316)
+- ✅ Affiliates: Bitunix, Blofin, MEXC, Gate.com, Bitvavo, Binance
+- ✅ Telegram links: @ApexFlashBot + @ApexFlashAlerts
+- ✅ Prijzen: Pro $9.99, Elite $29.99
+- ✅ Hero: live stats van /api/stats (Redis)
+- ✅ Email: support@apexflash.pro (Footer + About) — was info@mindvault-ai.com
+- ✅ Favicon: /public/favicon.svg — oranje bliksem
+- ✅ About pagina: /about — Mission, Strategy, Safety, Technology
+- ✅ About link in Navbar
+- ✅ 12 env vars op Render app service
+
+## SSOT SECRETS APP
+Box Drive: C:\Users\erik_\Box\08_OPERATIONS\8.1_ApexFlash_Bot\.env.apexflash-app
+Sync:      python sync_render_app_env.py (in apexflash-app repo)
 
 ## OPENSTAANDE ACTIES
-- ⚠️ Render env var REDIS_URL nodig voor live stats
-- ⚠️ Kleuren/features veranderd door commit 0eb2934 — review nodig
-- ⚠️ About page, CEO API, favicon nog niet hersteld
-
-## SSOT SECRETS
-Box Drive: C:\Users\erik_\Box\08_OPERATIONS\8.1_ApexFlash_Bot\.env.apexflash-app
+- ⚠️ CEO API route (/api/ceo) — aanwezig maar verifieer live
+- ⚠️ Verifieer live: apexflash.pro/about + favicon in browser tab
