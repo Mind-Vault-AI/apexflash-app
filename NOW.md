@@ -1,12 +1,14 @@
+<!-- markdownlint-disable MD013 MD022 MD025 MD032 MD034 MD058 MD060 -->
+
 # ApexFlash App — CURRENT STATUS
 # Last updated: 2026-04-11 (Sessie 26)
 
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.2
+- Version: v3.22.3
 
-## WAT WERKT (v3.22.2)
+## WAT WERKT (v3.22.3)
 - ✅ Landing page live — oranje branding (#f97316)
 - ✅ Affiliates: Bitunix, Blofin, MEXC, Gate.com, Bitvavo, Binance
 - ✅ Telegram links: @ApexFlashBot + @ApexFlashAlerts
