@@ -7,6 +7,7 @@
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
 - Version: v3.22.3
+- Global release: R2026.04.11.01
 
 ## WAT WERKT (v3.22.3)
 - ✅ Landing page live — oranje branding (#f97316)
