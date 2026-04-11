@@ -54,39 +54,35 @@ function resolveGumroadUrl(candidate: string | undefined, fallback: string): str
 
 export const CONFIG = {
   siteName: 'ApexFlash',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://apexflash.pro',
+  siteUrl: 'https://apexflash.pro',
   supportEmail: 'support@apexflash.pro',
   telegram: {
-    // NEXT_PUBLIC_TELEGRAM_BOT — set in Render env (matches Box .env.apexflash-app)
-    bot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_BOT, 'https://t.me/ApexFlashBot'),
-    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL, 'https://t.me/ApexFlashAlerts'),
-    support: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_SUPPORT, 'https://t.me/ApexFlashSupport'),
-    // Aliases used in components
-    get whaleBot() { return this.bot; },
-    get apexBot() { return this.bot; },
+    whaleBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_WHALE_BOT_URL, 'https://t.me/apexflashbot'),
+    apexBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_APEX_BOT_URL, 'https://t.me/apexflashbot'),
+    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/apexflash_signals'),
   },
   gumroad: {
     premiumUrl: resolveGumroadUrl(
-      process.env.NEXT_PUBLIC_GUMROAD_PRO,
+      process.env.NEXT_PUBLIC_GUMROAD_PRO_URL,
       'https://mindvault34.gumroad.com/l/rwauqu'
     ),
     eliteUrl: resolveGumroadUrl(
-      process.env.NEXT_PUBLIC_GUMROAD_ELITE,
+      process.env.NEXT_PUBLIC_GUMROAD_ELITE_URL,
       'https://mindvault34.gumroad.com/l/unetcl'
     ),
   },
   social: {
-    twitter: 'https://x.com/MindVault_ai',
+    twitter: 'https://x.com/apexflashpro',
   },
   pricing: {
     free: {
       name: 'Explorer',
       price: 0,
       features: [
-        'Whale alerts (3/day)',
+        'Basic whale alerts (3/day)',
         'Daily market summary',
-        'Telegram community access',
-        'Exchange fee discounts',
+        'Community Telegram access',
+        'Exchange affiliate perks',
       ],
     },
     pro: {
@@ -95,10 +91,10 @@ export const CONFIG = {
       period: 'month',
       features: [
         'Unlimited real-time whale alerts',
-        'Multi-chain: ETH, BSC, SOL, BASE',
-        'AI trading advisor',
-        'Grade A signals',
-        'Zero-Loss Manager',
+        'Multi-chain tracking (ETH, BSC, SOL, ARB)',
+        'Custom alert thresholds',
+        'AI Grade A/B signals',
+        'AI sentiment scoring',
         'Priority support',
       ],
     },
@@ -108,11 +104,12 @@ export const CONFIG = {
       period: 'month',
       features: [
         'Everything in Pro',
+        'Grade S whale signals (auto-execute)',
         'Private signals channel',
-        'Arbitrage scanner',
-        'Copy trading via MIZAR',
-        'GMGN AI trading (auto-swap)',
-        '1-on-1 onboarding',
+        'Arbitrage alerts',
+        'Portfolio risk analysis',
+        'Strategy backtesting (coming soon)',
+        '1-on-1 onboarding call',
       ],
     },
   },

@@ -7,8 +7,7 @@ export const metadata: Metadata = {
     'Real-time whale tracking, AI trading signals, and smart DCA strategies. Join thousands of traders using ApexFlash to navigate crypto markets.',
   keywords: 'crypto trading bot, whale tracker, DCA bot, trading signals, bitcoin, ethereum',
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
+    icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>',
   },
   openGraph: {
     title: 'ApexFlash | AI-Powered Crypto Trading Signals & Tools',
