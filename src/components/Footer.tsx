@@ -32,6 +32,15 @@ export default function Footer() {
               <li><a href="#exchanges" onClick={() => trackEvent('footer_click', { label: 'Exchanges', href: '#exchanges' })} className="hover:text-apex-400 transition-colors">Exchanges</a></li>
               <li>
                 <a
+                  href="/about"
+                  onClick={() => trackEvent('footer_click', { label: 'About', href: '/about' })}
+                  className="hover:text-apex-400 transition-colors"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
                   href={CONFIG.telegram.whaleBot}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -56,6 +65,17 @@ export default function Footer() {
                   className="hover:text-apex-400 transition-colors"
                 >
                   Telegram
+                </a>
+              </li>
+              <li>
+                <a
+                  href={CONFIG.social.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('footer_click', { label: 'Twitter', href: CONFIG.social.twitter })}
+                  className="hover:text-apex-400 transition-colors"
+                >
+                  X / Twitter
                 </a>
               </li>
               <li>

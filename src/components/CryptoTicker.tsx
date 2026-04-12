@@ -39,8 +39,8 @@ const COIN_LINKS: Record<string, string> = {
   PYTH: 'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
   JTO: 'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
   RAY: 'https://t.me/ApexFlashBot',
-  ONDO: 'https://www.gate.io/signup/VFFHXVFDUG',
-  HNT: 'https://www.gate.io/signup/VFFHXVFDUG',
+  ONDO: 'https://www.gate.com/signup/VFFHXVFDUG?ref_type=103',
+  HNT: 'https://www.gate.com/signup/VFFHXVFDUG?ref_type=103',
   DOGE: 'https://www.bitunix.com/register?vipCode=xc6jzk',
 };
 

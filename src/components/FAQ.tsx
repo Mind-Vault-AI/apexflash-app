@@ -10,11 +10,11 @@ const FAQS = [
   },
   {
     q: 'Is it free to use?',
-    a: 'Yes. The free tier includes token trading (1% fee per swap), basic whale alerts, an encrypted wallet, and token search. Pro ($19/mo) adds unlimited alerts and multi-chain tracking. Elite ($49/mo) adds AI signals and priority support.',
+    a: 'Yes. The free tier includes token trading (1% fee per swap), basic whale alerts, an encrypted wallet, and token search. Pro ($9.99/mo) adds unlimited alerts and multi-chain tracking. Elite ($29.99/mo) adds AI signals and priority support.',
   },
   {
     q: 'How does whale tracking work?',
-    a: 'We monitor 25+ large wallets across Binance, Coinbase, OKX and other exchanges. When big transfers happen — exchange withdrawals, accumulation patterns, unusual moves — you get instant alerts on Telegram so you can act before the crowd.',
+    a: 'We monitor smart-money wallets on Solana using GMGN and on-chain data. When whales accumulate — large buys, coordinated entries, unusual volume — you get instant alerts graded A–S so you can act before the crowd.',
   },
   {
     q: 'Is my wallet safe?',
@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: 'Can I earn by referring friends?',
-    a: 'Yes. Share your referral link and earn 25% of the trading fees from everyone you refer. There\'s no cap — the more active traders you bring, the more you earn.',
+    a: 'Yes. Share your referral link and earn 25–35% of the trading fees from everyone you refer, scaling up with volume. There\'s no cap — the more active traders you bring, the more you earn.',
   },
 ];
 

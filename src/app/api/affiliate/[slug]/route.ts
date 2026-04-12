@@ -1,36 +1,56 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 import { getExchange } from '@/lib/affiliates';
 
-const CLICKS_FILE = path.join(process.cwd(), 'data', 'affiliate_clicks.json');
+const UPSTASH_URL = process.env.REDIS_URL || '';
 
-interface ClickRecord {
-  slug: string;
-  timestamp: string;
-  ip: string;
-  userAgent: string;
-  referer: string;
+async function recordClick(slug: string, ip: string, userAgent: string, referer: string) {
+  if (!UPSTASH_URL) return;
+
+  try {
+    const url = new URL(UPSTASH_URL.replace('rediss://', 'https://'));
+    const host = url.hostname;
+    const password = url.password;
+
+    const entry = JSON.stringify({
+      slug,
+      timestamp: new Date().toISOString(),
+      ip,
+      userAgent,
+      referer,
+    });
+
+    await fetch(`https://${host}/lpush/affiliate:clicks:${slug}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${password}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([entry]),
+    });
+  } catch {
+    // Non-critical — don't block redirect
+  }
 }
 
-async function recordClick(click: ClickRecord) {
-  try {
-    const dir = path.dirname(CLICKS_FILE);
-    await fs.mkdir(dir, { recursive: true });
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+  const exchange = getExchange(slug);
 
-    let clicks: ClickRecord[] = [];
-    try {
-      const data = await fs.readFile(CLICKS_FILE, 'utf-8');
-      clicks = JSON.parse(data);
-    } catch {
-      // File doesn't exist yet
-    }
-
-    clicks.push(click);
-    await fs.writeFile(CLICKS_FILE, JSON.stringify(clicks, null, 2));
-  } catch (error) {
-    console.error('[AFFILIATE] Error recording click:', error);
+  if (!exchange) {
+    return NextResponse.json({ error: 'Unknown exchange' }, { status: 404 });
   }
+
+  const ip = request.headers.get('x-forwarded-for') || 'unknown';
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+  const referer = request.headers.get('referer') || 'direct';
+
+  await recordClick(slug, ip, userAgent, referer);
+  console.log(`[AFFILIATE] Click: ${slug} | From: ${referer} → ${exchange.affiliateUrl}`);
+
+  return NextResponse.redirect(exchange.affiliateUrl, { status: 302 });
 }
 
 export async function POST(
@@ -44,16 +64,12 @@ export async function POST(
     return NextResponse.json({ error: 'Unknown exchange' }, { status: 404 });
   }
 
-  const click: ClickRecord = {
-    slug,
-    timestamp: new Date().toISOString(),
-    ip: request.headers.get('x-forwarded-for') || 'unknown',
-    userAgent: request.headers.get('user-agent') || 'unknown',
-    referer: request.headers.get('referer') || 'direct',
-  };
+  const ip = request.headers.get('x-forwarded-for') || 'unknown';
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+  const referer = request.headers.get('referer') || 'direct';
 
-  await recordClick(click);
-  console.log(`[AFFILIATE] Click: ${slug} | From: ${click.referer}`);
+  await recordClick(slug, ip, userAgent, referer);
+  console.log(`[AFFILIATE] Click: ${slug} | From: ${referer}`);
 
   return NextResponse.json({ tracked: true, exchange: slug });
 }
