@@ -14,6 +14,7 @@ import TrackingBoot from '@/components/TrackingBoot';
 const LiveChart = dynamic(() => import('@/components/LiveChart'));
 const Reviews = dynamic(() => import('@/components/Reviews'));
 const FAQ = dynamic(() => import('@/components/FAQ'));
+const LiveFeed = dynamic(() => import('@/components/LiveFeed'));
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <CryptoTicker />
       <Navbar />
       <Hero />
+      <LiveFeed />
       <Features />
       <LiveChart />
       <Exchanges />

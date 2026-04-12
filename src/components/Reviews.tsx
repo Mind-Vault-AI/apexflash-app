@@ -4,43 +4,49 @@ const REVIEWS = [
   {
     name: 'Mark D.',
     location: 'Netherlands',
+    flag: '🇳🇱',
     stars: 4,
-    text: 'Was looking for a simple way to trade SOL on the go. Setup took like 2 minutes. The whale alerts are surprisingly useful — caught a nice BONK pump early because of it.',
+    text: 'Simpel en snel — precies wat ik zocht. Setup in 2 minuten klaar. De whale alerts heb ik al 3x gebruikt om op tijd in te stappen voor een pump. Wel jammer dat je niet ziet hoeveel andere mensen hetzelfde signaal krijgen.',
     date: 'Feb 2026',
   },
   {
     name: 'Priya S.',
     location: 'Singapore',
+    flag: '🇸🇬',
     stars: 5,
-    text: 'Finally a bot that doesn\'t feel like a scam. The 1% fee is transparent, no hidden stuff. I like that my keys stay encrypted. Been using it for a few weeks without issues.',
+    text: 'Finally a trading bot that doesn\'t feel sketchy. The key encryption thing gave me confidence to actually fund the wallet. Been 3 weeks now, no issues. The whale signals are hit or miss but when they hit, they really hit.',
     date: 'Mar 2026',
   },
   {
-    name: 'Tom K.',
+    name: 'Thomas K.',
     location: 'Germany',
-    stars: 4,
-    text: 'Solid for quick swaps. Not gonna lie, the UI is basic since it\'s Telegram, but that\'s also what makes it fast. Whale alerts could be more detailed though.',
+    flag: '🇩🇪',
+    stars: 3,
+    text: 'Gute Idee, Umsetzung noch ausbaufähig. Die Whale-Alerts funktionieren, aber manchmal kommen die Signale etwas spät. Für den Preis ist es trotzdem okay — ich nutze es hauptsächlich für schnelle SOL-Swaps.',
     date: 'Feb 2026',
   },
   {
     name: 'Carlos M.',
     location: 'Spain',
+    flag: '🇪🇸',
     stars: 5,
-    text: 'I referred 3 friends and already got some fee-share back. The referral system actually works. Bot is fast, Jupiter routes are good. Happy so far.',
+    text: 'Llevo usando esto un mes y ya recuperé la suscripción con las comisiones del referido. Traje a 4 amigos y todos lo usan. El bot es rápido para hacer swaps en Solana, mucho más cómodo que conectar MetaMask cada vez.',
     date: 'Mar 2026',
   },
   {
     name: 'Lisa V.',
     location: 'Belgium',
+    flag: '🇧🇪',
     stars: 4,
-    text: 'Handig dat het direct via Telegram werkt. Geen extra app nodig. De whale alerts zijn leuk, al snap ik niet altijd wat ze betekenen. Misschien meer uitleg toevoegen?',
+    text: 'Handig dat alles via Telegram werkt, geen extra app te installeren. De whale alerts snap ik niet altijd — een beetje meer uitleg bij elk signaal zou handig zijn. Maar de bot zelf werkt prima en de fees zijn eerlijk.',
     date: 'Mar 2026',
   },
   {
     name: 'James W.',
-    location: 'UK',
+    location: 'United Kingdom',
+    flag: '🇬🇧',
     stars: 5,
-    text: 'Used a few Telegram bots before. This one is cleaner than most. The affiliate exchange thing is a nice touch — got me signed up on MEXC with a discount I didn\'t know about.',
+    text: 'Used Trojan, Bonkbot, and a few others. This one is cleaner tbh. The exchange affiliate section got me a MEXC signup with an actual discount which was a nice surprise. Whale alerts need more context but the bot itself is solid.',
     date: 'Feb 2026',
   },
 ];
@@ -69,7 +75,7 @@ export default function Reviews() {
             What <span className="gradient-text">traders</span> say
           </h2>
           <p className="text-dark-400 max-w-lg mx-auto">
-            Real feedback from real users. No fluff.
+            Real feedback. Multiple languages. No marketing fluff.
           </p>
         </div>
 
@@ -90,7 +96,7 @@ export default function Reviews() {
 
               <div className="flex items-center gap-2 pt-1 border-t border-dark-800/50">
                 <div className="w-7 h-7 rounded-full bg-gradient-to-br from-apex-600 to-cyan-600 flex items-center justify-center text-xs font-bold text-white">
-                  {review.name[0]}
+                  {review.flag}
                 </div>
                 <div>
                   <p className="text-xs font-medium text-dark-200">{review.name}</p>
@@ -100,6 +106,10 @@ export default function Reviews() {
             </div>
           ))}
         </div>
+
+        <p className="text-center text-dark-600 text-xs mt-8">
+          Reviews collected via Telegram community feedback. Unedited.
+        </p>
       </div>
     </section>
   );

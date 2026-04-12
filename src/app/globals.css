@@ -11,6 +11,19 @@
   }
 }
 
+/* ── CryptoTicker scroll animation ─────────────────────────────── */
+.ticker-track {
+  animation: ticker-scroll 55s linear infinite;
+  will-change: transform;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @layer components {
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-apex-400 via-apex-300 to-emerald-300;
