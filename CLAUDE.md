@@ -1,6 +1,26 @@
 # ApexFlash Landing Page — Project Instructions
 
-## VERPLICHT: LEES EERST
+---
+
+## ⛔ STOP — LEES DIT EERST. GEEN UITZONDERINGEN.
+
+**Lees nu direct:**
+```
+C:/Users/erik_/projects/apexflash-bot/NOW.md
+```
+Dit is de SSOT voor de volledige ApexFlash status (bot + site). Zonder dit lezen: NIETS uitvoeren.
+
+**Werkwijze (LEAN/PDCA — altijd):**
+1. Lees NOW.md → maak todo list
+2. Uitvoeren stuk voor stuk → direct markeren als done
+3. Na IEDERE wijziging: NOW.md bijwerken + git commit + preview verifiëren
+4. Sessie afsluiten: "VOLGENDE SESSIE — START HIER" bijwerken
+
+**MEMO:** UPDATE = VOORUITGANG NOOIT ACHTERUITGANG · PDCA 99.9% SLA · MAIN GOAL EUR 1M vóór 29-03-2028
+
+---
+
+## VERPLICHT: LEES OOK
 1. Box Drive HANDOVER_SESSION.md (file_id: 2160131113318, folder_id: 369272330163)
 2. Box Drive DASHBOARD.md (file_id: 2154368375132)
 
