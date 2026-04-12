@@ -7,21 +7,23 @@ import { ArrowRight, Zap } from 'lucide-react';
 
 interface LiveStats {
   users: number;
+  signals: number | null;
   volume: string;
   tradesToday?: number;
   winRate?: number;
 }
 
 export default function Hero() {
-  const [stats, setStats] = useState<LiveStats>({ users: 2400, volume: '$18M+' });
+  const [stats, setStats] = useState<LiveStats>({ users: 0, signals: null, volume: '$39K+' });
 
   useEffect(() => {
     fetch('/api/stats')
       .then((r) => r.json())
       .then((d: LiveStats) => {
         setStats({
-          users: d.users && d.users > 100 ? d.users : 2400,
-          volume: d.volume || '$18M+',
+          users: d.users || 0,
+          signals: d.signals ?? null,
+          volume: d.volume || '$39K+',
           tradesToday: d.tradesToday,
           winRate: d.winRate,
         });
@@ -41,7 +43,9 @@ export default function Hero() {
           {/* Live social proof badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-apex-500/10 border border-apex-500/20 text-apex-400 text-sm font-semibold mb-8">
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            {stats.users.toLocaleString()}+ traders watching right now
+            {stats.signals !== null
+              ? `${stats.signals.toLocaleString()}+ whale signals tracked`
+              : '🔴 LIVE — whale scanner active 24/7'}
           </div>
 
           {/* Heading — urgency + FOMO */}
@@ -53,9 +57,9 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg sm:text-xl text-dark-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Every SOL pump starts with whale buys.{' '}
-            <strong className="text-white">{stats.users.toLocaleString()}+ traders</strong> see them first
-            — free on Telegram. <span className="text-apex-400">You&apos;re next.</span>
+            Every SOL pump starts with whale buys. Our scanner catches them{' '}
+            <strong className="text-white">before the crowd moves</strong>
+            {' '}— free on Telegram. <span className="text-apex-400">Be first.</span>
           </p>
 
           {/* Primary CTA */}
@@ -91,12 +95,16 @@ export default function Hero() {
           {/* Stats bar */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 pt-8 border-t border-dark-800/50">
             <div className="flex items-center gap-2 text-dark-300 text-sm">
-              <span className="text-xl">👥</span>
-              <span><strong className="text-white">{stats.users.toLocaleString()}+</strong> active traders</span>
+              <span className="text-xl">🐋</span>
+              <span>
+                {stats.signals !== null
+                  ? <><strong className="text-white">{stats.signals.toLocaleString()}+</strong> whale signals tracked</>
+                  : <><strong className="text-white">Scanner live</strong> — 24/7 active</>}
+              </span>
             </div>
             <div className="flex items-center gap-2 text-dark-300 text-sm">
               <span className="text-xl">📈</span>
-              <span><strong className="text-white">{stats.volume}</strong> tracked today</span>
+              <span><strong className="text-white">{stats.volume}</strong> volume tracked</span>
             </div>
             <div className="flex items-center gap-2 text-dark-300 text-sm">
               <span className="text-xl">🏦</span>
