@@ -49,7 +49,7 @@ export default function LiveFeed() {
 
   const scanLabel = loading
     ? '…'
-    : data?.scanMinutesAgo === null
+    : data === null || data.scanMinutesAgo === null
     ? 'offline'
     : data.scanMinutesAgo === 0
     ? 'just now'

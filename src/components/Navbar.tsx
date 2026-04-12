@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { CONFIG } from '@/lib/config';
 import { trackEvent } from '@/lib/tracking';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, LogIn, LogOut } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Features', href: '#features' },
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <nav className="fixed top-10 left-0 right-0 z-40 bg-dark-950/80 backdrop-blur-xl border-b border-dark-800/50">
@@ -48,6 +50,25 @@ export default function Navbar() {
             >
               Get Started
             </a>
+            {/* Auth button */}
+            {session ? (
+              <button
+                onClick={() => signOut()}
+                className="flex items-center gap-1.5 text-dark-400 hover:text-dark-200 transition-colors text-sm"
+                title={`Signed in as ${session.user?.email}`}
+              >
+                <LogOut className="w-4 h-4" />
+                Sign out
+              </button>
+            ) : (
+              <button
+                onClick={() => { trackEvent('nav_click', { label: 'Sign In', location: 'desktop' }); signIn('google'); }}
+                className="flex items-center gap-1.5 text-dark-300 hover:text-apex-400 transition-colors text-sm font-medium"
+              >
+                <LogIn className="w-4 h-4" />
+                Sign in
+              </button>
+            )}
           </div>
 
           {/* Mobile toggle */}
