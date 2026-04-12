@@ -88,9 +88,24 @@ export default function Hero() {
           </div>
 
           {/* Trust copy */}
-          <p className="text-dark-500 text-sm mb-14">
+          <p className="text-dark-500 text-sm mb-6">
             30-second setup. No download. No credit card.
           </p>
+
+          {/* Real trade proof — Bitunix verified results */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 rounded-lg bg-dark-800/70 border border-green-500/20 text-sm mb-10">
+            <span className="text-dark-400">Verified trade results:</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+              <strong className="text-green-400">+156%</strong>
+            </span>
+            <span className="text-dark-600">|</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+              <strong className="text-green-400">+305%</strong>
+            </span>
+            <span className="text-dark-500 text-xs">on Bitunix · SIREN signal</span>
+          </div>
 
           {/* Stats bar */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 pt-8 border-t border-dark-800/50">
@@ -107,8 +122,8 @@ export default function Hero() {
               <span><strong className="text-white">{stats.volume}</strong> volume tracked</span>
             </div>
             <div className="flex items-center gap-2 text-dark-300 text-sm">
-              <span className="text-xl">🏦</span>
-              <span>Tracking <strong className="text-white">Binance, Coinbase, OKX</strong> + more</span>
+              <span className="text-xl">✅</span>
+              <span>Real trades · <strong className="text-green-400">+156% / +305%</strong> proven</span>
             </div>
           </div>
 
