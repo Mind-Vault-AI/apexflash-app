@@ -6,7 +6,7 @@
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.4
+- Version: v3.22.5
 - Global release: R2026.04.11.01
 
 ## WAT WERKT (v3.22.4)
@@ -28,3 +28,9 @@ Sync:      python sync_render_app_env.py (in apexflash-app repo)
 ## OPENSTAANDE ACTIES
 - âš ï¸ CEO API route (/api/ceo) â€” aanwezig maar verifieer live
 - âš ï¸ Verifieer live: apexflash.pro/about + favicon in browser tab
+
+## v3.22.5 — NextAuth 500 fix (2026-04-17)
+- FIX: /api/auth/session 500 → GoogleProvider nu conditioneel geregistreerd
+- Oorzaak: GOOGLE_CLIENT_ID/SECRET ontbreken op Render → next-auth crash bij init
+- Gevolg: landing page werkte, maar console toonde 500 errors bij elke page load
+- Zodra Erik Google OAuth creds levert + op Render zet → login automatisch actief
