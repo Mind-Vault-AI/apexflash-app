@@ -27,10 +27,24 @@ export async function GET() {
     redis('keys/apexflash:pdca:signal:*'),
   ]);
 
-  // Time since last scan
+  // Time since last scan.
+  // Bot writes either a raw unix timestamp (int/string) or a JSON blob
+  // like {"ts":<unix>,"gmgn_ok":bool,"signals_this_scan":int}. Handle both
+  // so a contract drift on either side never flips the widget to "Offline".
   let scanMinutesAgo: number | null = null;
+  let gmgnOk: boolean | null = null;
   if (typeof heartbeat === 'string' || typeof heartbeat === 'number') {
-    const ts = parseInt(String(heartbeat), 10);
+    const raw = String(heartbeat);
+    let ts: number = NaN;
+    if (raw.trim().startsWith('{')) {
+      try {
+        const obj = JSON.parse(raw);
+        if (typeof obj?.ts === 'number') ts = obj.ts;
+        else if (typeof obj?.ts === 'string') ts = parseInt(obj.ts, 10);
+        if (typeof obj?.gmgn_ok === 'boolean') gmgnOk = obj.gmgn_ok;
+      } catch { /* fall through to int parse */ }
+    }
+    if (isNaN(ts)) ts = parseInt(raw, 10);
     if (!isNaN(ts)) {
       scanMinutesAgo = Math.floor((Date.now() / 1000 - ts) / 60);
     }
@@ -54,6 +68,7 @@ export async function GET() {
 
   const payload = {
     scanMinutesAgo,
+    gmgnOk,
     activePositions: activeCount,
     gradeA: countA,
     gradeS: countS,

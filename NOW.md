@@ -6,7 +6,7 @@
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.5
+- Version: v3.22.6
 - Global release: R2026.04.11.01
 
 ## WAT WERKT (v3.22.4)
@@ -34,3 +34,11 @@ Sync:      python sync_render_app_env.py (in apexflash-app repo)
 - Oorzaak: GOOGLE_CLIENT_ID/SECRET ontbreken op Render → next-auth crash bij init
 - Gevolg: landing page werkte, maar console toonde 500 errors bij elke page load
 - Zodra Erik Google OAuth creds levert + op Render zet → login automatisch actief
+
+## v3.22.6 — Whale Scanner "Offline" fix (2026-04-17)
+- FIX: LiveFeed toonde "Whale Scanner: Offline" terwijl bot live was
+- Oorzaak: bot schrijft JSON `{"ts":...,"gmgn_ok":...}` naar Redis key
+  `apexflash:whale:heartbeat`, maar /api/activity deed `parseInt()` op JSON
+  → NaN → scanMinutesAgo=null → frontend "Offline"
+- Fix: /api/activity parseert nu JSON (fallback naar plain int)
+- Bonus: gmgnOk veld doorgegeven naar frontend — toekomstige status badge
