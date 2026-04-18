@@ -6,7 +6,7 @@
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.6
+- Version: v3.22.7
 - Global release: R2026.04.11.01
 
 ## WAT WERKT (v3.22.4)
@@ -42,3 +42,10 @@ Sync:      python sync_render_app_env.py (in apexflash-app repo)
   → NaN → scanMinutesAgo=null → frontend "Offline"
 - Fix: /api/activity parseert nu JSON (fallback naar plain int)
 - Bonus: gmgnOk veld doorgegeven naar frontend — toekomstige status badge
+
+## v3.22.7 — Remove fake placeholder Reviews (2026-04-18)
+- REMOVED: src/components/Reviews.tsx (116 lines, mixed-language fake testimonials NL/EN/DE/ES)
+- REMOVED: dynamic import + <Reviews /> usage from src/app/page.tsx
+- WHY: Erik (CEO) decision — placeholder reviews = brand risk + zero conversion value
+- IMPACT: Page flow now: Referral → Pricing → FAQ → EmailCapture → Footer (cleaner)
+- NEXT: Real testimonials added back when real customers post them

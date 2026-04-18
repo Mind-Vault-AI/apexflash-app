@@ -12,7 +12,6 @@ import TrackingBoot from '@/components/TrackingBoot';
 
 // Lazy load heavy/below-fold components
 const LiveChart = dynamic(() => import('@/components/LiveChart'));
-const Reviews = dynamic(() => import('@/components/Reviews'));
 const FAQ = dynamic(() => import('@/components/FAQ'));
 const LiveFeed = dynamic(() => import('@/components/LiveFeed'));
 
@@ -28,7 +27,6 @@ export default function Home() {
       <LiveChart />
       <Exchanges />
       <Referral />
-      <Reviews />
       <Pricing />
       <FAQ />
       <EmailCapture />
