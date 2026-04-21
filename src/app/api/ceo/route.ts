@@ -138,6 +138,10 @@ async function getAffiliateKpis() {
 // ── Subscribers ─────────────────────────────────────────────────────────────
 
 async function getSubscriberCount(): Promise<number> {
+  // v3.22.8: prefer Redis SET `apexflash:subscribers` (now SSOT) — fall back to
+  // legacy file for transition / local dev where REDIS_URL is unset.
+  const fromRedis = await redis('SCARD', 'apexflash:subscribers');
+  if (typeof fromRedis === 'number') return fromRedis;
   const subs = await readJsonFile<string[]>(SUBSCRIBERS_FILE, []);
   return subs.length;
 }
