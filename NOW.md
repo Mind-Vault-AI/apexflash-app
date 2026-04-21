@@ -1,15 +1,15 @@
-﻿<!-- markdownlint-disable MD013 MD022 MD025 MD032 MD034 MD058 MD060 -->
+<!-- markdownlint-disable MD013 MD022 MD025 MD032 MD034 MD058 MD060 -->
 
 # ApexFlash App â€” CURRENT STATUS
-# Last updated: 2026-04-12 (Sessie 26)
+# Last updated: 2026-04-22 (Sessie 26)
 
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.8
+- Version: v3.22.9
 - Global release: R2026.04.11.01
 
-## WAT WERKT (v3.22.4)
+## WAT WERKT (v3.22.9)
 - âœ… Landing page live â€” oranje branding (#f97316)
 - âœ… Affiliates: Bitunix, Blofin, MEXC, Gate.com, Bitvavo, Binance
 - âœ… Telegram links: @ApexFlashBot + @ApexFlashAlerts
@@ -67,3 +67,4 @@ Sync:      python sync_render_app_env.py (in apexflash-app repo)
   - getSubscriberCount() probeert nu eerst Redis SCARD, valt terug op file (transitie / lokaal)
 - IMPACT: subscribers blijven nu staan tussen deploys; CEO dashboard count is consistent met form
 - VERSION 3.22.7 → 3.22.8
+

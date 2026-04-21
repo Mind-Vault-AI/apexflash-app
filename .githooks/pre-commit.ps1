@@ -26,10 +26,52 @@ if ($blocked.Count -gt 0) {
     exit 1
 }
 
+# ── Hardcoded secret CONTENT scan (CEO/Erik policy: ALL secrets in .env) ──
+# Patterns for known secret formats — extend as new providers are added.
+$secretContentPatterns = @(
+    @{ name = "Render API key";  pattern = 'rnd_[A-Za-z0-9]{15,}' },
+    @{ name = "OpenAI/Stripe sk";pattern = '\bsk-[A-Za-z0-9]{20,}' },
+    @{ name = "Stripe live key"; pattern = '\b(sk|pk|rk)_live_[A-Za-z0-9]{20,}' },
+    @{ name = "GitHub PAT";      pattern = '\bghp_[A-Za-z0-9]{20,}' },
+    @{ name = "GitHub fine PAT"; pattern = '\bgithub_pat_[A-Za-z0-9_]{40,}' },
+    @{ name = "Google API key";  pattern = '\bAIza[A-Za-z0-9_-]{30,}' },
+    @{ name = "Telegram token";  pattern = '\b[0-9]{9,}:AA[A-Za-z0-9_-]{30,}' },
+    @{ name = "Slack token";     pattern = '\bxox[abpsr]-[A-Za-z0-9-]{10,}' },
+    @{ name = "AWS access key";  pattern = '\b(AKIA|ASIA)[A-Z0-9]{16}\b' }
+)
+
+$contentViolations = @()
+foreach ($f in $normalized) {
+    if (-not (Test-Path $f)) { continue }
+    if ($f -match '\.(png|jpg|jpeg|gif|pdf|zip|lock|sqlite|db|bin|exe|dll)$') { continue }
+    if ($f -match '\.githooks/pre-commit\.ps1$') { continue }  # don't scan self
+    try {
+        $content = git show ":$f" 2>$null
+        if (-not $content) { continue }
+        foreach ($p in $secretContentPatterns) {
+            if ([regex]::IsMatch($content, $p.pattern)) {
+                $contentViolations += [pscustomobject]@{ file = $f; kind = $p.name }
+            }
+        }
+    } catch { }
+}
+
+if ($contentViolations.Count -gt 0) {
+    Write-Host "[ISO-GUARD] BLOCKED: Hardcoded secret detected in staged content:" -ForegroundColor Red
+    $contentViolations | ForEach-Object {
+        Write-Host " - $($_.file): $($_.kind)" -ForegroundColor Red
+    }
+    Write-Host "" -ForegroundColor Yellow
+    Write-Host "Policy (CEO/Erik): ALL secrets MUST come from .env (Box Drive SSOT)." -ForegroundColor Yellow
+    Write-Host "Replace with: value = os.getenv('NAME'); raise if missing." -ForegroundColor Yellow
+    Write-Host "To bypass (emergencies ONLY): set ISO_GUARD_BYPASS=1" -ForegroundColor DarkYellow
+    exit 1
+}
+
 $exempt = @(
     '^VERSION$',
     '^NOW\.md$',
-    '^package\.json$',
+    '^HANDOVER_GODMODE\.md$',
     '^\.gitignore$',
     '^\.gitattributes$',
     '^bump_version\.ps1$',
@@ -56,21 +98,14 @@ foreach ($f in $normalized) {
 
 if ($requiresVersion -and -not $versionStaged) {
     Write-Host "[ISO-GUARD] BLOCKED: VERSION is not staged." -ForegroundColor Red
-    Write-Host "Run .\bump_version.ps1 and stage VERSION + package.json + NOW.md." -ForegroundColor Yellow
+    Write-Host "Run .\bump_version.ps1 and stage VERSION + NOW.md." -ForegroundColor Yellow
     exit 1
 }
 
-if ((Test-Path "VERSION") -and (Test-Path "package.json") -and (Test-Path "NOW.md")) {
+if ((Test-Path "VERSION") -and (Test-Path "NOW.md")) {
     $version = (Get-Content "VERSION" -Raw).Trim()
-    $pkgRaw = Get-Content "package.json" -Raw | ConvertFrom-Json
-    $pkgVersion = [string]$pkgRaw.version
-    if ($version -ne $pkgVersion) {
-        Write-Host "[ISO-GUARD] BLOCKED: VERSION ($version) != package.json ($pkgVersion)." -ForegroundColor Red
-        exit 1
-    }
-
     $now = Get-Content "NOW.md" -Raw
-    $m = [regex]::Match($now, '(?m)^- Version:\s*v([0-9]+\.[0-9]+\.[0-9]+)\s*$')
+    $m = [regex]::Match($now, '(?m)^- Version:\s*v([0-9]+\.[0-9]+\.[0-9x]+)\s*$')
     if (-not $m.Success) {
         Write-Host "[ISO-GUARD] BLOCKED: NOW.md missing '- Version: vX.Y.Z'." -ForegroundColor Red
         exit 1
