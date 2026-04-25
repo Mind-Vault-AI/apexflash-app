@@ -59,7 +59,7 @@ export const CONFIG = {
   telegram: {
     whaleBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_WHALE_BOT_URL, 'https://t.me/apexflashbot'),
     apexBot: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_APEX_BOT_URL, 'https://t.me/apexflashbot'),
-    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/apexflash_signals'),
+    channel: resolveTelegramUrl(process.env.NEXT_PUBLIC_TELEGRAM_CHANNEL_URL, 'https://t.me/ApexFlashAlerts'),
   },
   gumroad: {
     premiumUrl: resolveGumroadUrl(
