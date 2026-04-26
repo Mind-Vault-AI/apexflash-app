@@ -95,7 +95,29 @@ interface SiteKpis {
 }
 
 async function getSiteKpis(): Promise<SiteKpis> {
-  const events = await readJsonFile<EventRecord[]>(EVENTS_FILE, []);
+  // v3.22.10: Prefer Redis (persistent across deploys). Fall back to legacy file
+  // if Redis is unavailable or empty (transition period).
+  let events: EventRecord[] = [];
+
+  if (UPSTASH_URL) {
+    try {
+      const raw = (await redis('LRANGE', 'apexflash:events:log', 0, 9999)) as string[] | null;
+      if (Array.isArray(raw) && raw.length > 0) {
+        events = raw
+          .map((s) => {
+            try { return JSON.parse(s) as EventRecord; } catch { return null; }
+          })
+          .filter((r): r is EventRecord => r !== null);
+      }
+    } catch {
+      // fall through to file
+    }
+  }
+
+  if (events.length === 0) {
+    events = await readJsonFile<EventRecord[]>(EVENTS_FILE, []);
+  }
+
   const byEvent: Record<string, number> = {};
   for (const e of events) {
     byEvent[e.event] = (byEvent[e.event] || 0) + 1;

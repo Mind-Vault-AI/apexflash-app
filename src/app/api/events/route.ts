@@ -1,9 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 
-const EVENTS_FILE = path.join(process.cwd(), 'data', 'events.json');
+/**
+ * /api/events — Analytics event tracking
+ *
+ * v3.22.10: Migrated from file-based (data/events.json) to Upstash Redis.
+ *   - Render ephemeral filesystem reset metrics on EVERY deploy — CEO rapport
+ *     toonde structureel 0 pageViews / 0 clicks. €1M doel onhaalbaar blind.
+ *   - Now stored as Redis LIST `apexflash:events:log` (LPUSH + LTRIM cap).
+ *   - Also per-event counters `apexflash:events:count:<name>` for O(1) KPIs.
+ *   - Local dev without REDIS_URL: in-memory array (process-local).
+ */
+
+const EVENTS_LOG_KEY = 'apexflash:events:log';
+const EVENTS_COUNT_PREFIX = 'apexflash:events:count:';
+const UPSTASH_URL = process.env.REDIS_URL || process.env.UPSTASH_REDIS_URL || '';
 const EVENTS_MAX_RECORDS = Math.max(500, Number(process.env.EVENTS_MAX_RECORDS || 5000));
+
 const ALLOWED_EVENTS = new Set([
   'page_view',
   'cta_click',
@@ -25,14 +37,39 @@ interface EventRecord {
   referer: string;
 }
 
+// In-memory shim for local dev only — never used in production
+const _devMemory: EventRecord[] = [];
+
+// ── Upstash REST helper (matches /api/subscribe + /api/ceo pattern) ────────
+async function redis(command: string, ...args: (string | number)[]): Promise<unknown> {
+  if (!UPSTASH_URL) return null;
+  try {
+    const url = new URL(UPSTASH_URL.replace('rediss://', 'https://'));
+    const resp = await fetch(`https://${url.hostname}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${url.password}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([command, ...args]),
+      cache: 'no-store',
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      return data.result;
+    }
+  } catch {
+    // Caller handles null result
+  }
+  return null;
+}
+
 function sanitizePayload(payload: unknown): Record<string, string | number | boolean | null> {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     return {};
   }
-
   const entries = Object.entries(payload as Record<string, unknown>).slice(0, 20);
   const clean: Record<string, string | number | boolean | null> = {};
-
   for (const [key, value] of entries) {
     const safeKey = key.slice(0, 60);
     if (typeof value === 'string') {
@@ -41,65 +78,67 @@ function sanitizePayload(payload: unknown): Record<string, string | number | boo
       clean[safeKey] = value;
     }
   }
-
   return clean;
 }
 
 function isAuthorized(request: NextRequest): boolean {
   const dashboardKey = process.env.EVENTS_DASHBOARD_KEY;
-
-  if (!dashboardKey) {
-    return true;
-  }
-
+  if (!dashboardKey) return true;
   const headerKey = request.headers.get('x-events-key');
   const queryKey = request.nextUrl.searchParams.get('key');
-
   return headerKey === dashboardKey || queryKey === dashboardKey;
-}
-
-async function recordEvent(record: EventRecord) {
-  try {
-    const dir = path.dirname(EVENTS_FILE);
-    await fs.mkdir(dir, { recursive: true });
-
-    let events: EventRecord[] = [];
-    try {
-      const data = await fs.readFile(EVENTS_FILE, 'utf-8');
-      events = JSON.parse(data);
-    } catch {
-      // file doesn't exist yet
-    }
-
-    events.push(record);
-
-    if (events.length > EVENTS_MAX_RECORDS) {
-      events = events.slice(-EVENTS_MAX_RECORDS);
-    }
-
-    await fs.writeFile(EVENTS_FILE, JSON.stringify(events, null, 2));
-  } catch (error) {
-    console.error('[TRACKING] Error recording event:', error);
-  }
 }
 
 function parsePositiveInt(value: string | null, fallback: number, max: number): number {
   const parsed = Number(value);
-  if (!Number.isFinite(parsed) || parsed <= 0) {
-    return fallback;
-  }
+  if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
   return Math.min(Math.floor(parsed), max);
 }
 
-async function loadEvents(): Promise<EventRecord[]> {
-  try {
-    const data = await fs.readFile(EVENTS_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch {
-    return [];
+async function recordEvent(record: EventRecord) {
+  // Production: Redis LPUSH + LTRIM + counter INCR
+  if (UPSTASH_URL) {
+    try {
+      await redis('LPUSH', EVENTS_LOG_KEY, JSON.stringify(record));
+      await redis('LTRIM', EVENTS_LOG_KEY, 0, EVENTS_MAX_RECORDS - 1);
+      await redis('INCR', `${EVENTS_COUNT_PREFIX}${record.event}`);
+      return;
+    } catch (error) {
+      console.error('[TRACKING] Redis error, falling through to memory:', error);
+    }
+  }
+  // Local dev / Redis down: in-memory (ephemeral)
+  _devMemory.push(record);
+  if (_devMemory.length > EVENTS_MAX_RECORDS) {
+    _devMemory.splice(0, _devMemory.length - EVENTS_MAX_RECORDS);
   }
 }
 
+async function loadEvents(): Promise<EventRecord[]> {
+  if (UPSTASH_URL) {
+    try {
+      const raw = (await redis('LRANGE', EVENTS_LOG_KEY, 0, EVENTS_MAX_RECORDS - 1)) as string[] | null;
+      if (Array.isArray(raw)) {
+        // Redis LPUSH stores newest-first; reverse to chronological for scoping
+        return raw
+          .map((s) => {
+            try {
+              return JSON.parse(s) as EventRecord;
+            } catch {
+              return null;
+            }
+          })
+          .filter((r): r is EventRecord => r !== null)
+          .reverse();
+      }
+    } catch (error) {
+      console.error('[TRACKING] Redis load error:', error);
+    }
+  }
+  return _devMemory.slice();
+}
+
+// ── POST: track event ─────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
     const { event, payload } = await request.json();
@@ -132,6 +171,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
+// ── GET: dashboard KPI read ───────────────────────────────────────────────
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -184,6 +224,7 @@ export async function GET(request: NextRequest) {
     byEvent,
     kpi,
     latest,
+    storage: UPSTASH_URL ? 'redis' : 'memory',
   }, {
     headers: {
       'Cache-Control': 'no-store',

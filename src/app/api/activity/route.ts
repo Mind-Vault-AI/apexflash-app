@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const UPSTASH_URL = process.env.REDIS_URL || '';
+const UPSTASH_URL = process.env.UPSTASH_REDIS_URL || process.env.REDIS_URL || '';
 
 async function redis(cmd: string): Promise<unknown> {
   if (!UPSTASH_URL) return null;
