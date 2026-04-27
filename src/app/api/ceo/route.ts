@@ -199,15 +199,35 @@ async function getBotKpis() {
   };
 }
 
+// ── Revenue KPIs from Redis (Gumroad sync writes here) ─────────────────────
+
+async function getRevenueKpis() {
+  const [revUsd, paidConv, totalUsers] = await Promise.all([
+    redis('GET', 'kpi:total_revenue_usd'),
+    redis('GET', 'kpi:paid_conversions'),
+    redis('GET', 'platform:total_users'),
+  ]);
+  const totalRevenueUsd = safeFloat(revUsd);
+  const conversions = safeInt(paidConv);
+  const users = safeInt(totalUsers);
+  return {
+    total_revenue_usd: Math.round(totalRevenueUsd * 100) / 100,
+    paid_conversions: conversions,
+    paid_conversion_pct: toRate(conversions, users),
+    arpu_usd: users > 0 ? Math.round((totalRevenueUsd / users) * 100) / 100 : 0,
+  };
+}
+
 // ── Main handler ─────────────────────────────────────────────────────────────
 
 export async function GET() {
   try {
-    const [site, affiliate, subscriberCount, bot] = await Promise.all([
+    const [site, affiliate, subscriberCount, bot, revenue] = await Promise.all([
       getSiteKpis(),
       getAffiliateKpis(),
       getSubscriberCount(),
       getBotKpis(),
+      getRevenueKpis(),
     ]);
 
     const today = new Date().toISOString().split('T')[0];
@@ -229,6 +249,9 @@ export async function GET() {
     if (bot.users.total > 0 && bot.users.total < 1000) {
       alerts.push(`📢 Users ${bot.users.total} — target 12k by month 6`);
     }
+    if (revenue.paid_conversions === 0 && bot.users.total > 0) {
+      alerts.push(`💰 0 paid conversions — check Gumroad Pro/Elite pricing (currently €0)`);
+    }
 
     return NextResponse.json(
       {
@@ -239,6 +262,7 @@ export async function GET() {
         site: site,
         subscribers: { total: subscriberCount },
         affiliate,
+        revenue,
         targets,
         alerts,
         health: {
