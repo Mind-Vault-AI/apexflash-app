@@ -43,7 +43,8 @@ Set-Content $versionFile "$new`n" -NoNewline
 
 $pkg = Get-Content $packageFile -Raw | ConvertFrom-Json
 $pkg.version = $new
-$pkg | ConvertTo-Json -Depth 100 | Set-Content $packageFile -Encoding UTF8
+$json = $pkg | ConvertTo-Json -Depth 100
+[System.IO.File]::WriteAllText($packageFile, $json + "`n", [System.Text.UTF8Encoding]::new($false))
 
 if (Test-Path $nowFile) {
     $content = Get-Content $nowFile -Raw
