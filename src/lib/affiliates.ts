@@ -39,7 +39,8 @@ function resolveAffiliateUrl(
   return fallback;
 }
 
-// All env var names match Box Drive: C:\Users\erik_\Box\08_OPERATIONS\8.1_ApexFlash_Bot\.env.apexflash-app
+// SSOT: Bot's core/config.py AFFILIATE_LINKS — landing page MUST match bot exchange hub.
+// Featured-status synced with bot. Only exchanges with real ref-codes are listed.
 export const EXCHANGES: Exchange[] = [
   {
     slug: 'bitunix',
@@ -56,20 +57,6 @@ export const EXCHANGES: Exchange[] = [
     tier: 'featured',
   },
   {
-    slug: 'blofin',
-    name: 'Blofin',
-    logo: '🟠',
-    affiliateUrl: resolveAffiliateUrl(
-      process.env.NEXT_PUBLIC_BLOFIN_URL,
-      'https://blofin.com/register?referral_code=b996a0111c1b4497b53d9b3cc82e4539',
-      ['blofin.com']
-    ),
-    commission: 'Up to 40% fee rebate',
-    description: 'Professional derivatives exchange — built for serious traders.',
-    features: ['Copy Trading', 'USDT Perps', 'Low Fees', 'Up to 100x'],
-    tier: 'featured',
-  },
-  {
     slug: 'mexc',
     name: 'MEXC',
     logo: '🔷',
@@ -78,10 +65,24 @@ export const EXCHANGES: Exchange[] = [
       'https://www.mexc.com/register?inviteCode=BPM0e8Rm',
       ['mexc.com']
     ),
-    commission: '0% Maker Fees',
-    description: 'Huge altcoin selection with zero maker fees on spot trading.',
-    features: ['0% Maker Fee', '1500+ Tokens', 'Futures', 'Earn'],
-    tier: 'standard',
+    commission: 'Up to 70% fee rebate',
+    description: '70% rebate, 2000+ trading pairs, zero maker fees on spot.',
+    features: ['0% Maker Fee', '2000+ Tokens', 'Futures', 'Earn'],
+    tier: 'featured',
+  },
+  {
+    slug: 'blofin',
+    name: 'BloFin',
+    logo: '🟠',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BLOFIN_URL,
+      'https://blofin.com/register?referral_code=b996a0111c1b4497b53d9b3cc82e4539',
+      ['blofin.com']
+    ),
+    commission: 'Up to 50% fee rebate',
+    description: 'Professional derivatives exchange — built for serious traders.',
+    features: ['Copy Trading', 'USDT Perps', 'Low Fees', 'Up to 100x'],
+    tier: 'featured',
   },
   {
     slug: 'gate',
@@ -95,7 +96,7 @@ export const EXCHANGES: Exchange[] = [
     commission: 'Up to 40% commission',
     description: 'Early access to new tokens with 1400+ listings.',
     features: ['1400+ Coins', 'IEO Launchpad', 'Copy Trading', 'Earn'],
-    tier: 'standard',
+    tier: 'featured',
   },
   {
     slug: 'bitvavo',
@@ -103,22 +104,68 @@ export const EXCHANGES: Exchange[] = [
     logo: '🇳🇱',
     affiliateUrl: resolveAffiliateUrl(
       process.env.NEXT_PUBLIC_BITVAVO_URL,
-      'https://bitvavo.com/?a=6A3E846932',
+      'https://bitvavo.com/invite?a=6A3E846932',
       ['bitvavo.com']
     ),
-    commission: '€0 trading fees (first €1000)',
-    description: 'European exchange — ideal for EUR traders. Lowest fees in NL/EU.',
+    commission: '€10 gratis + €10K fee-free',
+    description: 'Grootste Nederlandse crypto exchange — €10K fee-free trading bij signup.',
     features: ['EUR Direct', 'iDEAL', 'Low 0.25% fee', 'SEPA Free'],
-    tier: 'standard',
+    tier: 'featured',
   },
   {
     slug: 'binance',
     name: 'Binance',
     logo: '🟡',
-    affiliateUrl: 'https://accounts.binance.com/register',
-    commission: 'World\'s #1 by volume',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BINANCE_URL,
+      'https://accounts.binance.com/register',
+      ['binance.com']
+    ),
+    commission: 'Up to 50% fee rebate',
     description: 'World\'s largest crypto exchange. Full ecosystem.',
     features: ['Spot & Futures', 'Earn Products', 'Launchpad', 'P2P Trading'],
+    tier: 'standard',
+  },
+  {
+    slug: 'bybit',
+    name: 'Bybit',
+    logo: '🟧',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_BYBIT_URL,
+      'https://www.bybit.com/invite',
+      ['bybit.com']
+    ),
+    commission: 'Up to 50% fee rebate',
+    description: 'Top derivatives platform with deep liquidity.',
+    features: ['Derivatives', 'Copy Trading', 'Earn', 'Low Fees'],
+    tier: 'standard',
+  },
+  {
+    slug: 'okx',
+    name: 'OKX',
+    logo: '⚫',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_OKX_URL,
+      'https://www.okx.com/join',
+      ['okx.com']
+    ),
+    commission: 'Up to 50% fee rebate',
+    description: 'Web3 wallet + exchange in one platform.',
+    features: ['Web3 Wallet', 'DEX Aggregator', 'Spot & Futures', 'Earn'],
+    tier: 'standard',
+  },
+  {
+    slug: 'kucoin',
+    name: 'KuCoin',
+    logo: '🟢',
+    affiliateUrl: resolveAffiliateUrl(
+      process.env.NEXT_PUBLIC_KUCOIN_URL,
+      'https://www.kucoin.com/r/',
+      ['kucoin.com']
+    ),
+    commission: 'Up to 40% commission',
+    description: 'Gem hunter exchange — low-cap altcoins and new listings.',
+    features: ['Low-Cap Gems', 'Margin', 'Futures', 'Earn'],
     tier: 'standard',
   },
 ];
