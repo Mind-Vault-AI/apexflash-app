@@ -7,6 +7,7 @@ const nextConfig = {
       { source: '/login', destination: '/auth/signin', permanent: false },
       { source: '/signup', destination: '/auth/signin', permanent: false },
       { source: '/register', destination: '/auth/signin', permanent: false },
+      { source: '/premium', destination: '/#pricing', permanent: false },
     ];
   },
 };

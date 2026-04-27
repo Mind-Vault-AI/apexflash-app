@@ -109,6 +109,20 @@ export default function Navbar() {
             >
               Get Started
             </a>
+            {!session && (
+              <a
+                href={CONFIG.telegram.apexBot}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackEvent('nav_click', { label: 'Sign In', location: 'mobile', dest: 'telegram' });
+                  setOpen(false);
+                }}
+                className="block w-full text-center py-3 text-dark-200 hover:text-apex-400 transition-colors text-base font-medium border border-dark-700 rounded-xl mt-2"
+              >
+                Sign in
+              </a>
+            )}
           </div>
         </div>
       )}
