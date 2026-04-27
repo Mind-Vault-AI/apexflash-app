@@ -1,4 +1,4 @@
-﻿<!-- markdownlint-disable MD013 MD022 MD025 MD032 MD034 MD058 MD060 -->
+<!-- markdownlint-disable MD013 MD022 MD025 MD032 MD034 MD058 MD060 -->
 
 # ApexFlash App Ã¢â‚¬â€ CURRENT STATUS
 # Last updated: 2026-04-27 (Sessie 26)
@@ -6,10 +6,10 @@
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.22.14
+- Version: v3.23.56
 - Global release: R2026.04.11.01
 
-## WAT WERKT (v3.22.14)
+## WAT WERKT (v3.23.56)
 - Ã¢Å“â€¦ Landing page live Ã¢â‚¬â€ oranje branding (#f97316)
 - Ã¢Å“â€¦ Affiliates: Bitunix, Blofin, MEXC, Gate.com, Bitvavo, Binance
 - Ã¢Å“â€¦ Telegram links: @ApexFlashBot + @ApexFlashAlerts
