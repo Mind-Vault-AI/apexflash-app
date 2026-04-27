@@ -1,6 +1,6 @@
 {
   "name": "apexflash-app",
-  "version": "3.23.57",
+  "version": "3.23.58",
   "private": true,
   "scripts": {
     "dev": "next dev",

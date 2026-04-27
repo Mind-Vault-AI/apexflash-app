@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { CONFIG } from '@/lib/config';
 import { trackEvent } from '@/lib/tracking';
 import { Menu, X, Zap, LogIn, LogOut } from 'lucide-react';
@@ -61,13 +61,16 @@ export default function Navbar() {
                 Sign out
               </button>
             ) : (
-              <button
-                onClick={() => { trackEvent('nav_click', { label: 'Sign In', location: 'desktop' }); signIn('google'); }}
+              <a
+                href={CONFIG.telegram.apexBot}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('nav_click', { label: 'Sign In', location: 'desktop', dest: 'telegram' })}
                 className="flex items-center gap-1.5 text-dark-300 hover:text-apex-400 transition-colors text-sm font-medium"
               >
                 <LogIn className="w-4 h-4" />
                 Sign in
-              </button>
+              </a>
             )}
           </div>
 

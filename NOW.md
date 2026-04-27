@@ -6,10 +6,10 @@
 ## LIVE STATE
 - URL: https://apexflash.pro
 - Render service: srv-d6k5voh5pdvs73dsru5g
-- Version: v3.23.57
+- Version: v3.23.58
 - Global release: R2026.04.11.01
 
-## WAT WERKT (v3.23.57)
+## WAT WERKT (v3.23.58)
 - Ã¢Å“â€¦ Landing page live Ã¢â‚¬â€ oranje branding (#f97316)
 - Ã¢Å“â€¦ Affiliates: Bitunix, Blofin, MEXC, Gate.com, Bitvavo, Binance
 - Ã¢Å“â€¦ Telegram links: @ApexFlashBot + @ApexFlashAlerts
